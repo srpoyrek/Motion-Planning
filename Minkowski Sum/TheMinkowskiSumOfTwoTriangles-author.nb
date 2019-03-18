@@ -1,0 +1,1368 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     63799,       1360]
+NotebookOptionsPosition[     57880,       1245]
+NotebookOutlinePosition[     59948,       1296]
+CellTagsIndexPosition[     59620,       1284]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["The Minkowski Sum of Two Triangles", "DemoTitle",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.41762657591831*^9, 3.4176265830121965`*^9}, {
+   3.417861897536581*^9, 
+   3.4178619011614184`*^9}},ExpressionUUID->"658d6075-07f8-4da7-8e11-\
+be33ec42c387"],
+
+Cell["", "InitializationSection",ExpressionUUID->"97c3aa29-3024-4eb0-a752-63144ba81da3"],
+
+Cell[CellGroupData[{
+
+Cell["", "ManipulateSection",ExpressionUUID->"23fd2d3e-710e-4f09-8268-2440a975018c"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"tri", "=", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"a", "+", "x"}], ",", 
+         RowBox[{"b", "+", "x"}], ",", 
+         RowBox[{"c", "+", "x"}], ",", 
+         RowBox[{"c", "+", "y"}], ",", 
+         RowBox[{"b", "+", "y"}], ",", 
+         RowBox[{"a", "+", "y"}], ",", 
+         RowBox[{"a", "+", "x"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"a", "+", "x"}], ",", 
+         RowBox[{"b", "+", "x"}], ",", 
+         RowBox[{"c", "+", "x"}], ",", 
+         RowBox[{"c", "+", "z"}], ",", 
+         RowBox[{"b", "+", "z"}], ",", 
+         RowBox[{"a", "+", "z"}], ",", 
+         RowBox[{"a", "+", "x"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"a", "+", "y"}], ",", 
+         RowBox[{"b", "+", "y"}], ",", 
+         RowBox[{"c", "+", "y"}], ",", 
+         RowBox[{"c", "+", "z"}], ",", 
+         RowBox[{"b", "+", "z"}], ",", 
+         RowBox[{"a", "+", "z"}], ",", 
+         RowBox[{"a", "+", "y"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"a", "+", "x"}], ",", 
+         RowBox[{"b", "+", "x"}], ",", 
+         RowBox[{"d", "+", "x"}], ",", 
+         RowBox[{"d", "+", "y"}], ",", 
+         RowBox[{"b", "+", "y"}], ",", 
+         RowBox[{"a", "+", "y"}], ",", 
+         RowBox[{"a", "+", "x"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"a", "+", "x"}], ",", 
+         RowBox[{"b", "+", "x"}], ",", 
+         RowBox[{"d", "+", "x"}], ",", 
+         RowBox[{"d", "+", "z"}], ",", 
+         RowBox[{"b", "+", "z"}], ",", 
+         RowBox[{"a", "+", "z"}], ",", 
+         RowBox[{"a", "+", "x"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"a", "+", "y"}], ",", 
+         RowBox[{"b", "+", "y"}], ",", 
+         RowBox[{"d", "+", "y"}], ",", 
+         RowBox[{"d", "+", "z"}], ",", 
+         RowBox[{"b", "+", "z"}], ",", 
+         RowBox[{"a", "+", "z"}], ",", 
+         RowBox[{"a", "+", "y"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"a", "+", "x"}], ",", 
+         RowBox[{"c", "+", "x"}], ",", 
+         RowBox[{"d", "+", "x"}], ",", 
+         RowBox[{"d", "+", "y"}], ",", 
+         RowBox[{"c", "+", "y"}], ",", 
+         RowBox[{"a", "+", "y"}], ",", 
+         RowBox[{"a", "+", "x"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"a", "+", "x"}], ",", 
+         RowBox[{"c", "+", "x"}], ",", 
+         RowBox[{"d", "+", "x"}], ",", 
+         RowBox[{"d", "+", "z"}], ",", 
+         RowBox[{"c", "+", "z"}], ",", 
+         RowBox[{"a", "+", "z"}], ",", 
+         RowBox[{"a", "+", "x"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"a", "+", "y"}], ",", 
+         RowBox[{"c", "+", "y"}], ",", 
+         RowBox[{"d", "+", "y"}], ",", 
+         RowBox[{"d", "+", "z"}], ",", 
+         RowBox[{"c", "+", "z"}], ",", 
+         RowBox[{"a", "+", "z"}], ",", 
+         RowBox[{"a", "+", "y"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"b", "+", "x"}], ",", 
+         RowBox[{"c", "+", "x"}], ",", 
+         RowBox[{"d", "+", "x"}], ",", 
+         RowBox[{"d", "+", "y"}], ",", 
+         RowBox[{"c", "+", "y"}], ",", 
+         RowBox[{"b", "+", "y"}], ",", 
+         RowBox[{"b", "+", "x"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"b", "+", "x"}], ",", 
+         RowBox[{"c", "+", "x"}], ",", 
+         RowBox[{"d", "+", "x"}], ",", 
+         RowBox[{"d", "+", "z"}], ",", 
+         RowBox[{"c", "+", "z"}], ",", 
+         RowBox[{"b", "+", "z"}], ",", 
+         RowBox[{"b", "+", "x"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"b", "+", "y"}], ",", 
+         RowBox[{"c", "+", "y"}], ",", 
+         RowBox[{"d", "+", "y"}], ",", 
+         RowBox[{"d", "+", "z"}], ",", 
+         RowBox[{"c", "+", "z"}], ",", 
+         RowBox[{"b", "+", "z"}], ",", 
+         RowBox[{"b", "+", "y"}]}], "}"}]}], "\[IndentingNewLine]", "}"}]}], 
+    ";", "\[IndentingNewLine]", 
+    RowBox[{"s", "=", 
+     RowBox[{"Subsets", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"a", "+", "x"}], ",", 
+         RowBox[{"a", "+", "y"}], ",", 
+         RowBox[{"a", "+", "z"}], ",", 
+         RowBox[{"b", "+", "x"}], ",", 
+         RowBox[{"b", "+", "y"}], ",", 
+         RowBox[{"b", "+", "z"}], ",", 
+         RowBox[{"c", "+", "x"}], ",", 
+         RowBox[{"c", "+", "y"}], ",", 
+         RowBox[{"c", "+", "z"}], ",", 
+         RowBox[{"d", "+", "x"}], ",", 
+         RowBox[{"d", "+", "y"}], ",", 
+         RowBox[{"d", "+", "z"}]}], "}"}], ",", 
+       RowBox[{"{", "4", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"ps", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"a", "+", "x"}], ",", 
+       RowBox[{"b", "+", "x"}], ",", 
+       RowBox[{"c", "+", "x"}], ",", 
+       RowBox[{"d", "+", "x"}], ",", 
+       RowBox[{"a", "+", "y"}], ",", 
+       RowBox[{"b", "+", "y"}], ",", 
+       RowBox[{"c", "+", "y"}], ",", 
+       RowBox[{"d", "+", "y"}], ",", 
+       RowBox[{"a", "+", "z"}], ",", 
+       RowBox[{"b", "+", "z"}], ",", 
+       RowBox[{"c", "+", "z"}], ",", 
+       RowBox[{"d", "+", "z"}]}], "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Graphics", "[", 
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"ColorData", "[", 
+         RowBox[{"\"\<HTML\>\"", ",", "\"\<SlateBlue\>\""}], "]"}], ",", 
+        RowBox[{"Line", "[", 
+         RowBox[{"{", 
+          RowBox[{"a", ",", "b", ",", "c", ",", "d", ",", "a"}], "}"}], "]"}],
+         ",", "\[IndentingNewLine]", 
+        RowBox[{"ColorData", "[", 
+         RowBox[{"\"\<HTML\>\"", ",", "\"\<SlateBlue\>\""}], "]"}], ",", 
+        RowBox[{"Line", "[", 
+         RowBox[{"{", 
+          RowBox[{"x", ",", "y", ",", "z", ",", "x"}], "}"}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"RGBColor", "[", 
+         RowBox[{".48", ",", ".11", ",", ".56"}], "]"}], ",", 
+        RowBox[{"Polygon", "[", "s", "]"}], ",", "\[IndentingNewLine]", 
+        "Black", ",", 
+        RowBox[{"Line", "[", "tri", "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"RGBColor", "[", 
+         RowBox[{"1", ",", ".47", ",", "0"}], "]"}], ",", 
+        RowBox[{"PointSize", "[", ".03", "]"}], ",", 
+        RowBox[{"Point", "[", "ps", "]"}]}], "\[IndentingNewLine]", "}"}], 
+      ",", "\[IndentingNewLine]", 
+      RowBox[{"PlotRange", "\[Rule]", "10"}], ",", " ", 
+      RowBox[{"ImageSize", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"400", ",", "400"}], "}"}]}]}], "\[IndentingNewLine]", 
+     "]"}]}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "6.1"}], ",", 
+         RowBox[{"-", "4.7"}]}], "}"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "9"}], ",", 
+       RowBox[{"-", "9"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"9", ",", "9"}], "}"}], ",", "Locator"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"b", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "5.6"}], ",", "7.9"}], "}"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "9"}], ",", 
+       RowBox[{"-", "9"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"9", ",", "9"}], "}"}], ",", "Locator"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"c", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "8.4"}], ",", 
+         RowBox[{"-", "2.0"}]}], "}"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "9"}], ",", 
+       RowBox[{"-", "9"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"9", ",", "9"}], "}"}], ",", "Locator"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"d", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "8"}], ",", "5"}], "}"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "9"}], ",", 
+       RowBox[{"-", "9"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"9", ",", "9"}], "}"}], ",", "Locator"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"{", 
+        RowBox[{"6.1", ",", 
+         RowBox[{"-", "1.7"}]}], "}"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "9"}], ",", 
+       RowBox[{"-", "9"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"9", ",", "9"}], "}"}], ",", "Locator"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"y", ",", 
+       RowBox[{"{", 
+        RowBox[{"5.6", ",", 
+         RowBox[{"-", "4.1"}]}], "}"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "9"}], ",", 
+       RowBox[{"-", "9"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"9", ",", "9"}], "}"}], ",", "Locator"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"z", ",", 
+       RowBox[{"{", 
+        RowBox[{"4.4", ",", 
+         RowBox[{"-", "2.0"}]}], "}"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "9"}], ",", 
+       RowBox[{"-", "9"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"9", ",", "9"}], "}"}], ",", "Locator"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"TrackedSymbols", "\[Rule]", "Manipulate"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"AutorunSequencing", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "2", ",", "4"}], "}"}]}]}], "\[IndentingNewLine]", 
+  "]"}]], "Input",
+ CellChangeTimes->{
+  3.35696210375764*^9, 3.417626587637285*^9, 3.417626742202753*^9, {
+   3.4176268157197895`*^9, 3.4176268642832212`*^9}, {3.4176269143466825`*^9, 
+   3.417626965332037*^9}, {3.4176270013952293`*^9, 3.4176270430991545`*^9}, {
+   3.417627107959775*^9, 3.417627108162904*^9}, {3.4176279692575617`*^9, 
+   3.417627988117299*^9}, {3.417629154545944*^9, 3.4176291652023983`*^9}, {
+   3.4176292816733847`*^9, 3.4176293077051344`*^9}, {3.4178032647566266`*^9, 
+   3.417803316271922*^9}, {3.755217376989566*^9, 3.7552173801301394`*^9}, {
+   3.7552174240903597`*^9, 3.755217426179371*^9}, {3.755219363360428*^9, 
+   3.7552194250900707`*^9}, {3.755219462587881*^9, 3.7552195334994907`*^9}, {
+   3.7552195673832073`*^9, 3.755219875749772*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"452c23f7-596c-49ea-b30e-7dbb7cddbb53"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = {-1.2000000000000002`, \
+-0.40000000000000036`}, $CellContext`b$$ = {-5.699999999999999, 
+    7.960000000000001}, $CellContext`c$$ = {-8.94, 
+    7.960000000000001}, $CellContext`d$$ = {-9, -2.5999999999999996`}, \
+$CellContext`x$$ = {6.1, -1.7}, $CellContext`y$$ = {
+    6.66, -5.9}, $CellContext`z$$ = {1.4299999999999997`, -4.54}, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`a$$], {-6.1, -4.7}}, {-9, -9}, {9, 9}}, {{
+       Hold[$CellContext`b$$], {-5.6, 7.9}}, {-9, -9}, {9, 9}}, {{
+       Hold[$CellContext`c$$], {-8.4, -2.}}, {-9, -9}, {9, 9}}, {{
+       Hold[$CellContext`d$$], {-8, 5}}, {-9, -9}, {9, 9}}, {{
+       Hold[$CellContext`x$$], {6.1, -1.7}}, {-9, -9}, {9, 9}}, {{
+       Hold[$CellContext`y$$], {5.6, -4.1}}, {-9, -9}, {9, 9}}, {{
+       Hold[$CellContext`z$$], {4.4, -2.}}, {-9, -9}, {9, 9}}}, 
+    Typeset`size$$ = {600., {296., 304.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`a$119732$$ = {0, 0}, $CellContext`b$119733$$ = {0, 
+    0}, $CellContext`c$119734$$ = {0, 0}, $CellContext`d$119735$$ = {0, 
+    0}, $CellContext`x$119736$$ = {0, 0}}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = {-6.1, -4.7}, $CellContext`b$$ = \
+{-5.6, 7.9}, $CellContext`c$$ = {-8.4, -2.}, $CellContext`d$$ = {-8, 
+         5}, $CellContext`x$$ = {6.1, -1.7}, $CellContext`y$$ = {
+         5.6, -4.1}, $CellContext`z$$ = {4.4, -2.}}, "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$119732$$, {0, 0}], 
+        Hold[$CellContext`b$$, $CellContext`b$119733$$, {0, 0}], 
+        Hold[$CellContext`c$$, $CellContext`c$119734$$, {0, 0}], 
+        Hold[$CellContext`d$$, $CellContext`d$119735$$, {0, 0}], 
+        Hold[$CellContext`x$$, $CellContext`x$119736$$, {0, 0}]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> ($CellContext`tri = {{$CellContext`a$$ + $CellContext`x$$, \
+$CellContext`b$$ + $CellContext`x$$, $CellContext`c$$ + $CellContext`x$$, \
+$CellContext`c$$ + $CellContext`y$$, $CellContext`b$$ + $CellContext`y$$, \
+$CellContext`a$$ + $CellContext`y$$, $CellContext`a$$ + $CellContext`x$$}, \
+{$CellContext`a$$ + $CellContext`x$$, $CellContext`b$$ + $CellContext`x$$, \
+$CellContext`c$$ + $CellContext`x$$, $CellContext`c$$ + $CellContext`z$$, \
+$CellContext`b$$ + $CellContext`z$$, $CellContext`a$$ + $CellContext`z$$, \
+$CellContext`a$$ + $CellContext`x$$}, {$CellContext`a$$ + $CellContext`y$$, \
+$CellContext`b$$ + $CellContext`y$$, $CellContext`c$$ + $CellContext`y$$, \
+$CellContext`c$$ + $CellContext`z$$, $CellContext`b$$ + $CellContext`z$$, \
+$CellContext`a$$ + $CellContext`z$$, $CellContext`a$$ + $CellContext`y$$}, \
+{$CellContext`a$$ + $CellContext`x$$, $CellContext`b$$ + $CellContext`x$$, \
+$CellContext`d$$ + $CellContext`x$$, $CellContext`d$$ + $CellContext`y$$, \
+$CellContext`b$$ + $CellContext`y$$, $CellContext`a$$ + $CellContext`y$$, \
+$CellContext`a$$ + $CellContext`x$$}, {$CellContext`a$$ + $CellContext`x$$, \
+$CellContext`b$$ + $CellContext`x$$, $CellContext`d$$ + $CellContext`x$$, \
+$CellContext`d$$ + $CellContext`z$$, $CellContext`b$$ + $CellContext`z$$, \
+$CellContext`a$$ + $CellContext`z$$, $CellContext`a$$ + $CellContext`x$$}, \
+{$CellContext`a$$ + $CellContext`y$$, $CellContext`b$$ + $CellContext`y$$, \
+$CellContext`d$$ + $CellContext`y$$, $CellContext`d$$ + $CellContext`z$$, \
+$CellContext`b$$ + $CellContext`z$$, $CellContext`a$$ + $CellContext`z$$, \
+$CellContext`a$$ + $CellContext`y$$}, {$CellContext`a$$ + $CellContext`x$$, \
+$CellContext`c$$ + $CellContext`x$$, $CellContext`d$$ + $CellContext`x$$, \
+$CellContext`d$$ + $CellContext`y$$, $CellContext`c$$ + $CellContext`y$$, \
+$CellContext`a$$ + $CellContext`y$$, $CellContext`a$$ + $CellContext`x$$}, \
+{$CellContext`a$$ + $CellContext`x$$, $CellContext`c$$ + $CellContext`x$$, \
+$CellContext`d$$ + $CellContext`x$$, $CellContext`d$$ + $CellContext`z$$, \
+$CellContext`c$$ + $CellContext`z$$, $CellContext`a$$ + $CellContext`z$$, \
+$CellContext`a$$ + $CellContext`x$$}, {$CellContext`a$$ + $CellContext`y$$, \
+$CellContext`c$$ + $CellContext`y$$, $CellContext`d$$ + $CellContext`y$$, \
+$CellContext`d$$ + $CellContext`z$$, $CellContext`c$$ + $CellContext`z$$, \
+$CellContext`a$$ + $CellContext`z$$, $CellContext`a$$ + $CellContext`y$$}, \
+{$CellContext`b$$ + $CellContext`x$$, $CellContext`c$$ + $CellContext`x$$, \
+$CellContext`d$$ + $CellContext`x$$, $CellContext`d$$ + $CellContext`y$$, \
+$CellContext`c$$ + $CellContext`y$$, $CellContext`b$$ + $CellContext`y$$, \
+$CellContext`b$$ + $CellContext`x$$}, {$CellContext`b$$ + $CellContext`x$$, \
+$CellContext`c$$ + $CellContext`x$$, $CellContext`d$$ + $CellContext`x$$, \
+$CellContext`d$$ + $CellContext`z$$, $CellContext`c$$ + $CellContext`z$$, \
+$CellContext`b$$ + $CellContext`z$$, $CellContext`b$$ + $CellContext`x$$}, \
+{$CellContext`b$$ + $CellContext`y$$, $CellContext`c$$ + $CellContext`y$$, \
+$CellContext`d$$ + $CellContext`y$$, $CellContext`d$$ + $CellContext`z$$, \
+$CellContext`c$$ + $CellContext`z$$, $CellContext`b$$ + $CellContext`z$$, \
+$CellContext`b$$ + $CellContext`y$$}}; $CellContext`s = 
+        Subsets[{$CellContext`a$$ + $CellContext`x$$, $CellContext`a$$ + \
+$CellContext`y$$, $CellContext`a$$ + $CellContext`z$$, $CellContext`b$$ + \
+$CellContext`x$$, $CellContext`b$$ + $CellContext`y$$, $CellContext`b$$ + \
+$CellContext`z$$, $CellContext`c$$ + $CellContext`x$$, $CellContext`c$$ + \
+$CellContext`y$$, $CellContext`c$$ + $CellContext`z$$, $CellContext`d$$ + \
+$CellContext`x$$, $CellContext`d$$ + $CellContext`y$$, $CellContext`d$$ + \
+$CellContext`z$$}, {
+          4}]; $CellContext`ps = {$CellContext`a$$ + $CellContext`x$$, \
+$CellContext`b$$ + $CellContext`x$$, $CellContext`c$$ + $CellContext`x$$, \
+$CellContext`d$$ + $CellContext`x$$, $CellContext`a$$ + $CellContext`y$$, \
+$CellContext`b$$ + $CellContext`y$$, $CellContext`c$$ + $CellContext`y$$, \
+$CellContext`d$$ + $CellContext`y$$, $CellContext`a$$ + $CellContext`z$$, \
+$CellContext`b$$ + $CellContext`z$$, $CellContext`c$$ + $CellContext`z$$, \
+$CellContext`d$$ + $CellContext`z$$}; Graphics[{
+          ColorData["HTML", "SlateBlue"], 
+          
+          Line[{$CellContext`a$$, $CellContext`b$$, $CellContext`c$$, \
+$CellContext`d$$, $CellContext`a$$}], 
+          ColorData["HTML", "SlateBlue"], 
+          
+          Line[{$CellContext`x$$, $CellContext`y$$, $CellContext`z$$, \
+$CellContext`x$$}], 
+          RGBColor[0.48, 0.11, 0.56], 
+          Polygon[$CellContext`s], Black, 
+          Line[$CellContext`tri], 
+          RGBColor[1, 0.47, 0], 
+          PointSize[0.03], 
+          Point[$CellContext`ps]}, PlotRange -> 10, ImageSize -> {400, 400}]),
+       "Specifications" :> {{{$CellContext`a$$, {-6.1, -4.7}}, {-9, -9}, {9, 
+         9}, ControlType -> 
+         Locator}, {{$CellContext`b$$, {-5.6, 7.9}}, {-9, -9}, {9, 9}, 
+         ControlType -> 
+         Locator}, {{$CellContext`c$$, {-8.4, -2.}}, {-9, -9}, {9, 9}, 
+         ControlType -> Locator}, {{$CellContext`d$$, {-8, 5}}, {-9, -9}, {9, 
+         9}, ControlType -> 
+         Locator}, {{$CellContext`x$$, {6.1, -1.7}}, {-9, -9}, {9, 9}, 
+         ControlType -> 
+         Locator}, {{$CellContext`y$$, {5.6, -4.1}}, {-9, -9}, {9, 9}, 
+         ControlType -> Locator}, {{$CellContext`z$$, {4.4, -2.}}, {-9, -9}, {
+         9, 9}, ControlType -> Locator}}, 
+      "Options" :> {
+       TrackedSymbols -> Manipulate, AutorunSequencing -> {1, 2, 4}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{680., {345., 353.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.755217382097552*^9, 3.7552174269163294`*^9, 3.7552177863598614`*^9, {
+   3.7552198523609858`*^9, 3.755219876410027*^9}},
+ CellLabel->"Out[5]=",
+ CellID->346370698,ExpressionUUID->"228ac9cf-70f0-4337-b98e-6c088932cbbd"]
+}, Open  ]],
+
+Cell[BoxData[".9"], "Input",
+ CellChangeTimes->{3.755217786195125*^9, 3.755218586249956*^9},
+ CellID->104834879,ExpressionUUID->"8eaac89c-389e-41c6-a972-4423ed4e7561"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ManipulateCaptionSection",ExpressionUUID->"f6e8fdb8-5507-4dff-9f24-cec1c0930b21"],
+
+Cell[TextData[{
+ "The Minkowski sum of two subsets in the plane, ",
+ Cell[BoxData[
+  FormBox["A", TraditionalForm]], "InlineMath",ExpressionUUID->
+  "70b140fc-36b6-438f-a1a8-62ac8b7b867c"],
+ " and ",
+ Cell[BoxData[
+  FormBox["B", TraditionalForm]], "InlineMath",ExpressionUUID->
+  "fa7e16b2-8939-4840-af0f-6965e23326f0"],
+ ", is the set of all sums ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"a", "+", "b"}], TraditionalForm]], "InlineMath",ExpressionUUID->
+  "924b7cc8-5fc2-4c76-a50c-237fc5bacb40"],
+ ", where ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"a", "\[Element]", "A"}], TraditionalForm]], "InlineMath",
+  ExpressionUUID->"95239ecc-863a-4c7c-8dc5-e5a0a5100c19"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"b", "\[Element]", "B"}], TraditionalForm]], "InlineMath",
+  ExpressionUUID->"07b58ab0-6a3d-464a-a2c1-782496c79c69"],
+ ". "
+}], "ManipulateCaption",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.417908343680415*^9, 3.4179083590247545`*^9}, {
+   3.417908397276223*^9, 3.417908397791868*^9}, {3.41790842804303*^9, 
+   3.4179085033896728`*^9}, {3.417974617915233*^9, 3.417974630337347*^9}},
+ CellID->60545480,ExpressionUUID->"f8143c75-1099-4023-918a-a638a2c5a563"],
+
+Cell["\<\
+This Demonstration shows the Minkowski sum of two triangles, which is the \
+smallest convex set containing the nine points obtained by forming the vector \
+sums using the vertices of the triangles.\
+\>", "ManipulateCaption",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.417908343680415*^9, 3.4179083590247545`*^9}, {
+   3.417908397276223*^9, 3.417908397791868*^9}, {3.41790842804303*^9, 
+   3.4179085033740473`*^9}},
+ CellID->473521991,ExpressionUUID->"4482fec9-3e4f-47a7-8737-3a9ec6121a35"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ThumbnailSection",ExpressionUUID->"ee4125b5-05cc-41e0-bdd6-b09644c8250b"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = {-7.12, -4.46}, $CellContext`b$$ = \
+{-3.2800000000000002`, 5.}, $CellContext`c$$ = {-6.779999999999999, 
+    9.}, $CellContext`x$$ = {9., -1.5599999999999996`}, $CellContext`y$$ = {
+    6.6, -0.5600000000000005}, $CellContext`z$$ = {8.260000000000002, -4.46}, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`a$$], {-7.12, -4.46}}, {-9, -9}, {9, 9}}, {{
+       Hold[$CellContext`b$$], {-3.2800000000000002`, 5.}}, {-9, -9}, {9, 
+      9}}, {{
+       Hold[$CellContext`c$$], {-6.779999999999999, 9.}}, {-9, -9}, {9, 9}}, {{
+       Hold[$CellContext`x$$], {9., -1.5599999999999996`}}, {-9, -9}, {9, 
+      9}}, {{
+       Hold[$CellContext`y$$], {6.6, -0.5600000000000005}}, {-9, -9}, {9, 
+      9}}, {{
+       Hold[$CellContext`z$$], {8.260000000000002, -4.46}}, {-9, -9}, {9, 
+      9}}}, Typeset`size$$ = {600., {296., 304.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`a$757$$ = {0, 0}, $CellContext`b$758$$ = {0, 
+    0}, $CellContext`c$759$$ = {0, 0}, $CellContext`x$760$$ = {0, 
+    0}, $CellContext`y$761$$ = {0, 0}}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = {-7.12, -4.46}, $CellContext`b$$ = \
+{-3.2800000000000002`, 5.}, $CellContext`c$$ = {-6.779999999999999, 
+         9.}, $CellContext`x$$ = {
+         9., -1.5599999999999996`}, $CellContext`y$$ = {
+         6.6, -0.5600000000000005}, $CellContext`z$$ = {
+         8.260000000000002, -4.46}}, "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$757$$, {0, 0}], 
+        Hold[$CellContext`b$$, $CellContext`b$758$$, {0, 0}], 
+        Hold[$CellContext`c$$, $CellContext`c$759$$, {0, 0}], 
+        Hold[$CellContext`x$$, $CellContext`x$760$$, {0, 0}], 
+        Hold[$CellContext`y$$, $CellContext`y$761$$, {0, 0}]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> ($CellContext`tri = {{$CellContext`a$$ + $CellContext`x$$, \
+$CellContext`b$$ + $CellContext`x$$, $CellContext`b$$ + $CellContext`y$$, \
+$CellContext`a$$ + $CellContext`y$$, $CellContext`a$$ + $CellContext`x$$}, \
+{$CellContext`a$$ + $CellContext`x$$, $CellContext`b$$ + $CellContext`x$$, \
+$CellContext`b$$ + $CellContext`z$$, $CellContext`a$$ + $CellContext`z$$, \
+$CellContext`a$$ + $CellContext`x$$}, {$CellContext`a$$ + $CellContext`y$$, \
+$CellContext`b$$ + $CellContext`y$$, $CellContext`b$$ + $CellContext`z$$, \
+$CellContext`a$$ + $CellContext`z$$, $CellContext`a$$ + $CellContext`y$$}, \
+{$CellContext`c$$ + $CellContext`x$$, $CellContext`b$$ + $CellContext`x$$, \
+$CellContext`b$$ + $CellContext`y$$, $CellContext`c$$ + $CellContext`y$$, \
+$CellContext`c$$ + $CellContext`x$$}, {$CellContext`c$$ + $CellContext`x$$, \
+$CellContext`b$$ + $CellContext`x$$, $CellContext`b$$ + $CellContext`z$$, \
+$CellContext`c$$ + $CellContext`z$$, $CellContext`c$$ + $CellContext`x$$}, \
+{$CellContext`c$$ + $CellContext`y$$, $CellContext`b$$ + $CellContext`y$$, \
+$CellContext`b$$ + $CellContext`z$$, $CellContext`c$$ + $CellContext`z$$, \
+$CellContext`c$$ + $CellContext`y$$}, {$CellContext`c$$ + $CellContext`x$$, \
+$CellContext`a$$ + $CellContext`x$$, $CellContext`a$$ + $CellContext`y$$, \
+$CellContext`c$$ + $CellContext`y$$, $CellContext`c$$ + $CellContext`x$$}, \
+{$CellContext`c$$ + $CellContext`x$$, $CellContext`a$$ + $CellContext`x$$, \
+$CellContext`a$$ + $CellContext`z$$, $CellContext`c$$ + $CellContext`z$$, \
+$CellContext`c$$ + $CellContext`x$$}, {$CellContext`c$$ + $CellContext`y$$, \
+$CellContext`a$$ + $CellContext`y$$, $CellContext`a$$ + $CellContext`z$$, \
+$CellContext`c$$ + $CellContext`z$$, $CellContext`c$$ + $CellContext`y$$}}; \
+$CellContext`s = 
+        Subsets[{$CellContext`a$$ + $CellContext`x$$, $CellContext`a$$ + \
+$CellContext`y$$, $CellContext`a$$ + $CellContext`z$$, $CellContext`b$$ + \
+$CellContext`x$$, $CellContext`b$$ + $CellContext`y$$, $CellContext`b$$ + \
+$CellContext`z$$, $CellContext`c$$ + $CellContext`x$$, $CellContext`c$$ + \
+$CellContext`y$$, $CellContext`c$$ + $CellContext`z$$}, {
+          3}]; $CellContext`ps = {$CellContext`a$$ + $CellContext`x$$, \
+$CellContext`b$$ + $CellContext`x$$, $CellContext`c$$ + $CellContext`x$$, \
+$CellContext`a$$ + $CellContext`y$$, $CellContext`b$$ + $CellContext`y$$, \
+$CellContext`c$$ + $CellContext`y$$, $CellContext`a$$ + $CellContext`z$$, \
+$CellContext`b$$ + $CellContext`z$$, $CellContext`c$$ + $CellContext`z$$}; 
+       Graphics[{
+          ColorData["HTML", "SlateBlue"], 
+          
+          Line[{$CellContext`a$$, $CellContext`b$$, $CellContext`c$$, \
+$CellContext`a$$}], 
+          ColorData["HTML", "SlateBlue"], 
+          
+          Line[{$CellContext`x$$, $CellContext`y$$, $CellContext`z$$, \
+$CellContext`x$$}], 
+          RGBColor[0.48, 0.11, 0.56], 
+          Polygon[$CellContext`s], Black, 
+          Line[$CellContext`tri], 
+          RGBColor[1, 0.47, 0], 
+          PointSize[0.03], 
+          Point[$CellContext`ps]}, PlotRange -> 10, ImageSize -> {400, 400}]),
+       "Specifications" :> {{{$CellContext`a$$, {-7.12, -4.46}}, {-9, -9}, {9,
+          9}, ControlType -> 
+         Locator}, {{$CellContext`b$$, {-3.2800000000000002`, 
+          5.}}, {-9, -9}, {9, 9}, ControlType -> 
+         Locator}, {{$CellContext`c$$, {-6.779999999999999, 9.}}, {-9, -9}, {
+         9, 9}, ControlType -> 
+         Locator}, {{$CellContext`x$$, {
+          9., -1.5599999999999996`}}, {-9, -9}, {9, 9}, ControlType -> 
+         Locator}, {{$CellContext`y$$, {
+          6.6, -0.5600000000000005}}, {-9, -9}, {9, 9}, ControlType -> 
+         Locator}, {{$CellContext`z$$, {
+          8.260000000000002, -4.46}}, {-9, -9}, {9, 9}, ControlType -> 
+         Locator}}, 
+      "Options" :> {
+       TrackedSymbols -> Manipulate, AutorunSequencing -> {1, 2, 4}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{680., {345., 353.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->680574023,ExpressionUUID->"88e4eb31-9ec3-4463-b888-61388ff0d6ee"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SnapshotsSection",ExpressionUUID->"e635b158-f2d0-48bc-9b8a-9a1cb4522cd4"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = {-4.46, -1.5}, $CellContext`b$$ = \
+{-3.2800000000000002`, 
+    5.}, $CellContext`c$$ = {-9, 3.4399999999999995`}, $CellContext`x$$ = {
+    9., -1.5599999999999996`}, $CellContext`y$$ = {
+    6.6, -0.5600000000000005}, $CellContext`z$$ = {8.260000000000002, -4.46}, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`a$$], {-4.46, -1.5}}, {-9, -9}, {9, 9}}, {{
+       Hold[$CellContext`b$$], {-3.2800000000000002`, 5.}}, {-9, -9}, {9, 
+      9}}, {{
+       Hold[$CellContext`c$$], {-9, 3.4399999999999995`}}, {-9, -9}, {9, 
+      9}}, {{
+       Hold[$CellContext`x$$], {9., -1.5599999999999996`}}, {-9, -9}, {9, 
+      9}}, {{
+       Hold[$CellContext`y$$], {6.6, -0.5600000000000005}}, {-9, -9}, {9, 
+      9}}, {{
+       Hold[$CellContext`z$$], {8.260000000000002, -4.46}}, {-9, -9}, {9, 
+      9}}}, Typeset`size$$ = {400., {198., 202.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`a$836$$ = {0, 0}, $CellContext`b$837$$ = {0, 
+    0}, $CellContext`c$838$$ = {0, 0}, $CellContext`x$839$$ = {0, 
+    0}, $CellContext`y$840$$ = {0, 0}}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = {-4.46, -1.5}, $CellContext`b$$ = \
+{-3.2800000000000002`, 
+         5.}, $CellContext`c$$ = {-9, 
+          3.4399999999999995`}, $CellContext`x$$ = {
+         9., -1.5599999999999996`}, $CellContext`y$$ = {
+         6.6, -0.5600000000000005}, $CellContext`z$$ = {
+         8.260000000000002, -4.46}}, "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$836$$, {0, 0}], 
+        Hold[$CellContext`b$$, $CellContext`b$837$$, {0, 0}], 
+        Hold[$CellContext`c$$, $CellContext`c$838$$, {0, 0}], 
+        Hold[$CellContext`x$$, $CellContext`x$839$$, {0, 0}], 
+        Hold[$CellContext`y$$, $CellContext`y$840$$, {0, 0}]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> ($CellContext`tri = {{$CellContext`a$$ + $CellContext`x$$, \
+$CellContext`b$$ + $CellContext`x$$, $CellContext`b$$ + $CellContext`y$$, \
+$CellContext`a$$ + $CellContext`y$$, $CellContext`a$$ + $CellContext`x$$}, \
+{$CellContext`a$$ + $CellContext`x$$, $CellContext`b$$ + $CellContext`x$$, \
+$CellContext`b$$ + $CellContext`z$$, $CellContext`a$$ + $CellContext`z$$, \
+$CellContext`a$$ + $CellContext`x$$}, {$CellContext`a$$ + $CellContext`y$$, \
+$CellContext`b$$ + $CellContext`y$$, $CellContext`b$$ + $CellContext`z$$, \
+$CellContext`a$$ + $CellContext`z$$, $CellContext`a$$ + $CellContext`y$$}, \
+{$CellContext`c$$ + $CellContext`x$$, $CellContext`b$$ + $CellContext`x$$, \
+$CellContext`b$$ + $CellContext`y$$, $CellContext`c$$ + $CellContext`y$$, \
+$CellContext`c$$ + $CellContext`x$$}, {$CellContext`c$$ + $CellContext`x$$, \
+$CellContext`b$$ + $CellContext`x$$, $CellContext`b$$ + $CellContext`z$$, \
+$CellContext`c$$ + $CellContext`z$$, $CellContext`c$$ + $CellContext`x$$}, \
+{$CellContext`c$$ + $CellContext`y$$, $CellContext`b$$ + $CellContext`y$$, \
+$CellContext`b$$ + $CellContext`z$$, $CellContext`c$$ + $CellContext`z$$, \
+$CellContext`c$$ + $CellContext`y$$}, {$CellContext`c$$ + $CellContext`x$$, \
+$CellContext`a$$ + $CellContext`x$$, $CellContext`a$$ + $CellContext`y$$, \
+$CellContext`c$$ + $CellContext`y$$, $CellContext`c$$ + $CellContext`x$$}, \
+{$CellContext`c$$ + $CellContext`x$$, $CellContext`a$$ + $CellContext`x$$, \
+$CellContext`a$$ + $CellContext`z$$, $CellContext`c$$ + $CellContext`z$$, \
+$CellContext`c$$ + $CellContext`x$$}, {$CellContext`c$$ + $CellContext`y$$, \
+$CellContext`a$$ + $CellContext`y$$, $CellContext`a$$ + $CellContext`z$$, \
+$CellContext`c$$ + $CellContext`z$$, $CellContext`c$$ + $CellContext`y$$}}; \
+$CellContext`s = 
+        Subsets[{$CellContext`a$$ + $CellContext`x$$, $CellContext`a$$ + \
+$CellContext`y$$, $CellContext`a$$ + $CellContext`z$$, $CellContext`b$$ + \
+$CellContext`x$$, $CellContext`b$$ + $CellContext`y$$, $CellContext`b$$ + \
+$CellContext`z$$, $CellContext`c$$ + $CellContext`x$$, $CellContext`c$$ + \
+$CellContext`y$$, $CellContext`c$$ + $CellContext`z$$}, {
+          3}]; $CellContext`ps = {$CellContext`a$$ + $CellContext`x$$, \
+$CellContext`b$$ + $CellContext`x$$, $CellContext`c$$ + $CellContext`x$$, \
+$CellContext`a$$ + $CellContext`y$$, $CellContext`b$$ + $CellContext`y$$, \
+$CellContext`c$$ + $CellContext`y$$, $CellContext`a$$ + $CellContext`z$$, \
+$CellContext`b$$ + $CellContext`z$$, $CellContext`c$$ + $CellContext`z$$}; 
+       Graphics[{
+          ColorData["HTML", "SlateBlue"], 
+          
+          Line[{$CellContext`a$$, $CellContext`b$$, $CellContext`c$$, \
+$CellContext`a$$}], 
+          ColorData["HTML", "SlateBlue"], 
+          
+          Line[{$CellContext`x$$, $CellContext`y$$, $CellContext`z$$, \
+$CellContext`x$$}], 
+          RGBColor[0.48, 0.11, 0.56], 
+          Polygon[$CellContext`s], Black, 
+          Line[$CellContext`tri], 
+          RGBColor[1, 0.47, 0], 
+          PointSize[0.03], 
+          Point[$CellContext`ps]}, PlotRange -> 10, ImageSize -> {400, 400}]),
+       "Specifications" :> {{{$CellContext`a$$, {-4.46, -1.5}}, {-9, -9}, {9, 
+         9}, ControlType -> 
+         Locator}, {{$CellContext`b$$, {-3.2800000000000002`, 
+          5.}}, {-9, -9}, {9, 9}, ControlType -> 
+         Locator}, {{$CellContext`c$$, {-9, 3.4399999999999995`}}, {-9, -9}, {
+         9, 9}, ControlType -> 
+         Locator}, {{$CellContext`x$$, {
+          9., -1.5599999999999996`}}, {-9, -9}, {9, 9}, ControlType -> 
+         Locator}, {{$CellContext`y$$, {
+          6.6, -0.5600000000000005}}, {-9, -9}, {9, 9}, ControlType -> 
+         Locator}, {{$CellContext`z$$, {
+          8.260000000000002, -4.46}}, {-9, -9}, {9, 9}, ControlType -> 
+         Locator}}, 
+      "Options" :> {
+       TrackedSymbols -> Manipulate, AutorunSequencing -> {1, 2, 4}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{488., {249., 258.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->103165097,ExpressionUUID->"7ed467c1-1ebf-406e-bf7d-7a014ba7eef6"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = {-7.12, -4.46}, $CellContext`b$$ = \
+{-3.84, -0.4599999999999991}, $CellContext`c$$ = {-3.5599999999999996`, \
+-4.46}, $CellContext`x$$ = {9., -1.5599999999999996`}, $CellContext`y$$ = {
+    6.6, -0.5600000000000005}, $CellContext`z$$ = {8.260000000000002, -4.46}, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`a$$], {-7.12, -4.46}}, {-9, -9}, {9, 9}}, {{
+       Hold[$CellContext`b$$], {-3.84, -0.4599999999999991}}, {-9, -9}, {9, 
+      9}}, {{
+       Hold[$CellContext`c$$], {-3.5599999999999996`, -4.46}}, {-9, -9}, {9, 
+      9}}, {{
+       Hold[$CellContext`x$$], {9., -1.5599999999999996`}}, {-9, -9}, {9, 
+      9}}, {{
+       Hold[$CellContext`y$$], {6.6, -0.5600000000000005}}, {-9, -9}, {9, 
+      9}}, {{
+       Hold[$CellContext`z$$], {8.260000000000002, -4.46}}, {-9, -9}, {9, 
+      9}}}, Typeset`size$$ = {400., {198., 202.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`a$915$$ = {0, 0}, $CellContext`b$916$$ = {0, 
+    0}, $CellContext`c$917$$ = {0, 0}, $CellContext`x$918$$ = {0, 
+    0}, $CellContext`y$919$$ = {0, 0}}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = {-7.12, -4.46}, $CellContext`b$$ = \
+{-3.84, -0.4599999999999991}, $CellContext`c$$ = {-3.5599999999999996`, \
+-4.46}, $CellContext`x$$ = {9., -1.5599999999999996`}, $CellContext`y$$ = {
+         6.6, -0.5600000000000005}, $CellContext`z$$ = {
+         8.260000000000002, -4.46}}, "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$915$$, {0, 0}], 
+        Hold[$CellContext`b$$, $CellContext`b$916$$, {0, 0}], 
+        Hold[$CellContext`c$$, $CellContext`c$917$$, {0, 0}], 
+        Hold[$CellContext`x$$, $CellContext`x$918$$, {0, 0}], 
+        Hold[$CellContext`y$$, $CellContext`y$919$$, {0, 0}]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> ($CellContext`tri = {{$CellContext`a$$ + $CellContext`x$$, \
+$CellContext`b$$ + $CellContext`x$$, $CellContext`b$$ + $CellContext`y$$, \
+$CellContext`a$$ + $CellContext`y$$, $CellContext`a$$ + $CellContext`x$$}, \
+{$CellContext`a$$ + $CellContext`x$$, $CellContext`b$$ + $CellContext`x$$, \
+$CellContext`b$$ + $CellContext`z$$, $CellContext`a$$ + $CellContext`z$$, \
+$CellContext`a$$ + $CellContext`x$$}, {$CellContext`a$$ + $CellContext`y$$, \
+$CellContext`b$$ + $CellContext`y$$, $CellContext`b$$ + $CellContext`z$$, \
+$CellContext`a$$ + $CellContext`z$$, $CellContext`a$$ + $CellContext`y$$}, \
+{$CellContext`c$$ + $CellContext`x$$, $CellContext`b$$ + $CellContext`x$$, \
+$CellContext`b$$ + $CellContext`y$$, $CellContext`c$$ + $CellContext`y$$, \
+$CellContext`c$$ + $CellContext`x$$}, {$CellContext`c$$ + $CellContext`x$$, \
+$CellContext`b$$ + $CellContext`x$$, $CellContext`b$$ + $CellContext`z$$, \
+$CellContext`c$$ + $CellContext`z$$, $CellContext`c$$ + $CellContext`x$$}, \
+{$CellContext`c$$ + $CellContext`y$$, $CellContext`b$$ + $CellContext`y$$, \
+$CellContext`b$$ + $CellContext`z$$, $CellContext`c$$ + $CellContext`z$$, \
+$CellContext`c$$ + $CellContext`y$$}, {$CellContext`c$$ + $CellContext`x$$, \
+$CellContext`a$$ + $CellContext`x$$, $CellContext`a$$ + $CellContext`y$$, \
+$CellContext`c$$ + $CellContext`y$$, $CellContext`c$$ + $CellContext`x$$}, \
+{$CellContext`c$$ + $CellContext`x$$, $CellContext`a$$ + $CellContext`x$$, \
+$CellContext`a$$ + $CellContext`z$$, $CellContext`c$$ + $CellContext`z$$, \
+$CellContext`c$$ + $CellContext`x$$}, {$CellContext`c$$ + $CellContext`y$$, \
+$CellContext`a$$ + $CellContext`y$$, $CellContext`a$$ + $CellContext`z$$, \
+$CellContext`c$$ + $CellContext`z$$, $CellContext`c$$ + $CellContext`y$$}}; \
+$CellContext`s = 
+        Subsets[{$CellContext`a$$ + $CellContext`x$$, $CellContext`a$$ + \
+$CellContext`y$$, $CellContext`a$$ + $CellContext`z$$, $CellContext`b$$ + \
+$CellContext`x$$, $CellContext`b$$ + $CellContext`y$$, $CellContext`b$$ + \
+$CellContext`z$$, $CellContext`c$$ + $CellContext`x$$, $CellContext`c$$ + \
+$CellContext`y$$, $CellContext`c$$ + $CellContext`z$$}, {
+          3}]; $CellContext`ps = {$CellContext`a$$ + $CellContext`x$$, \
+$CellContext`b$$ + $CellContext`x$$, $CellContext`c$$ + $CellContext`x$$, \
+$CellContext`a$$ + $CellContext`y$$, $CellContext`b$$ + $CellContext`y$$, \
+$CellContext`c$$ + $CellContext`y$$, $CellContext`a$$ + $CellContext`z$$, \
+$CellContext`b$$ + $CellContext`z$$, $CellContext`c$$ + $CellContext`z$$}; 
+       Graphics[{
+          ColorData["HTML", "SlateBlue"], 
+          
+          Line[{$CellContext`a$$, $CellContext`b$$, $CellContext`c$$, \
+$CellContext`a$$}], 
+          ColorData["HTML", "SlateBlue"], 
+          
+          Line[{$CellContext`x$$, $CellContext`y$$, $CellContext`z$$, \
+$CellContext`x$$}], 
+          RGBColor[0.48, 0.11, 0.56], 
+          Polygon[$CellContext`s], Black, 
+          Line[$CellContext`tri], 
+          RGBColor[1, 0.47, 0], 
+          PointSize[0.03], 
+          Point[$CellContext`ps]}, PlotRange -> 10, ImageSize -> {400, 400}]),
+       "Specifications" :> {{{$CellContext`a$$, {-7.12, -4.46}}, {-9, -9}, {9,
+          9}, ControlType -> 
+         Locator}, {{$CellContext`b$$, {-3.84, -0.4599999999999991}}, {-9, \
+-9}, {9, 9}, ControlType -> 
+         Locator}, {{$CellContext`c$$, {-3.5599999999999996`, -4.46}}, {-9, \
+-9}, {9, 9}, ControlType -> 
+         Locator}, {{$CellContext`x$$, {
+          9., -1.5599999999999996`}}, {-9, -9}, {9, 9}, ControlType -> 
+         Locator}, {{$CellContext`y$$, {
+          6.6, -0.5600000000000005}}, {-9, -9}, {9, 9}, ControlType -> 
+         Locator}, {{$CellContext`z$$, {
+          8.260000000000002, -4.46}}, {-9, -9}, {9, 9}, ControlType -> 
+         Locator}}, 
+      "Options" :> {
+       TrackedSymbols -> Manipulate, AutorunSequencing -> {1, 2, 4}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{488., {249., 258.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->95190139,ExpressionUUID->"9e3c405a-adf8-44ad-aff6-79d832687add"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = {-7.12, -4.46}, $CellContext`b$$ = \
+{-3.2800000000000002`, 
+    5.}, $CellContext`c$$ = {-9, 3.76}, $CellContext`x$$ = {
+    9., -1.5599999999999996`}, $CellContext`y$$ = {
+    2.3200000000000003`, -0.2400000000000002}, $CellContext`z$$ = {
+    8.260000000000002, -4.46}, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`a$$], {-7.12, -4.46}}, {-9, -9}, {9, 9}}, {{
+       Hold[$CellContext`b$$], {-3.2800000000000002`, 5.}}, {-9, -9}, {9, 
+      9}}, {{
+       Hold[$CellContext`c$$], {-9, 3.76}}, {-9, -9}, {9, 9}}, {{
+       Hold[$CellContext`x$$], {9., -1.5599999999999996`}}, {-9, -9}, {9, 
+      9}}, {{
+       Hold[$CellContext`y$$], {
+       2.3200000000000003`, -0.2400000000000002}}, {-9, -9}, {9, 9}}, {{
+       Hold[$CellContext`z$$], {8.260000000000002, -4.46}}, {-9, -9}, {9, 
+      9}}}, Typeset`size$$ = {400., {198., 202.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`a$994$$ = {0, 0}, $CellContext`b$995$$ = {0, 
+    0}, $CellContext`c$996$$ = {0, 0}, $CellContext`x$997$$ = {0, 
+    0}, $CellContext`y$998$$ = {0, 0}}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = {-7.12, -4.46}, $CellContext`b$$ = \
+{-3.2800000000000002`, 
+         5.}, $CellContext`c$$ = {-9, 3.76}, $CellContext`x$$ = {
+         9., -1.5599999999999996`}, $CellContext`y$$ = {
+         2.3200000000000003`, -0.2400000000000002}, $CellContext`z$$ = {
+         8.260000000000002, -4.46}}, "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$994$$, {0, 0}], 
+        Hold[$CellContext`b$$, $CellContext`b$995$$, {0, 0}], 
+        Hold[$CellContext`c$$, $CellContext`c$996$$, {0, 0}], 
+        Hold[$CellContext`x$$, $CellContext`x$997$$, {0, 0}], 
+        Hold[$CellContext`y$$, $CellContext`y$998$$, {0, 0}]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> ($CellContext`tri = {{$CellContext`a$$ + $CellContext`x$$, \
+$CellContext`b$$ + $CellContext`x$$, $CellContext`b$$ + $CellContext`y$$, \
+$CellContext`a$$ + $CellContext`y$$, $CellContext`a$$ + $CellContext`x$$}, \
+{$CellContext`a$$ + $CellContext`x$$, $CellContext`b$$ + $CellContext`x$$, \
+$CellContext`b$$ + $CellContext`z$$, $CellContext`a$$ + $CellContext`z$$, \
+$CellContext`a$$ + $CellContext`x$$}, {$CellContext`a$$ + $CellContext`y$$, \
+$CellContext`b$$ + $CellContext`y$$, $CellContext`b$$ + $CellContext`z$$, \
+$CellContext`a$$ + $CellContext`z$$, $CellContext`a$$ + $CellContext`y$$}, \
+{$CellContext`c$$ + $CellContext`x$$, $CellContext`b$$ + $CellContext`x$$, \
+$CellContext`b$$ + $CellContext`y$$, $CellContext`c$$ + $CellContext`y$$, \
+$CellContext`c$$ + $CellContext`x$$}, {$CellContext`c$$ + $CellContext`x$$, \
+$CellContext`b$$ + $CellContext`x$$, $CellContext`b$$ + $CellContext`z$$, \
+$CellContext`c$$ + $CellContext`z$$, $CellContext`c$$ + $CellContext`x$$}, \
+{$CellContext`c$$ + $CellContext`y$$, $CellContext`b$$ + $CellContext`y$$, \
+$CellContext`b$$ + $CellContext`z$$, $CellContext`c$$ + $CellContext`z$$, \
+$CellContext`c$$ + $CellContext`y$$}, {$CellContext`c$$ + $CellContext`x$$, \
+$CellContext`a$$ + $CellContext`x$$, $CellContext`a$$ + $CellContext`y$$, \
+$CellContext`c$$ + $CellContext`y$$, $CellContext`c$$ + $CellContext`x$$}, \
+{$CellContext`c$$ + $CellContext`x$$, $CellContext`a$$ + $CellContext`x$$, \
+$CellContext`a$$ + $CellContext`z$$, $CellContext`c$$ + $CellContext`z$$, \
+$CellContext`c$$ + $CellContext`x$$}, {$CellContext`c$$ + $CellContext`y$$, \
+$CellContext`a$$ + $CellContext`y$$, $CellContext`a$$ + $CellContext`z$$, \
+$CellContext`c$$ + $CellContext`z$$, $CellContext`c$$ + $CellContext`y$$}}; \
+$CellContext`s = 
+        Subsets[{$CellContext`a$$ + $CellContext`x$$, $CellContext`a$$ + \
+$CellContext`y$$, $CellContext`a$$ + $CellContext`z$$, $CellContext`b$$ + \
+$CellContext`x$$, $CellContext`b$$ + $CellContext`y$$, $CellContext`b$$ + \
+$CellContext`z$$, $CellContext`c$$ + $CellContext`x$$, $CellContext`c$$ + \
+$CellContext`y$$, $CellContext`c$$ + $CellContext`z$$}, {
+          3}]; $CellContext`ps = {$CellContext`a$$ + $CellContext`x$$, \
+$CellContext`b$$ + $CellContext`x$$, $CellContext`c$$ + $CellContext`x$$, \
+$CellContext`a$$ + $CellContext`y$$, $CellContext`b$$ + $CellContext`y$$, \
+$CellContext`c$$ + $CellContext`y$$, $CellContext`a$$ + $CellContext`z$$, \
+$CellContext`b$$ + $CellContext`z$$, $CellContext`c$$ + $CellContext`z$$}; 
+       Graphics[{
+          ColorData["HTML", "SlateBlue"], 
+          
+          Line[{$CellContext`a$$, $CellContext`b$$, $CellContext`c$$, \
+$CellContext`a$$}], 
+          ColorData["HTML", "SlateBlue"], 
+          
+          Line[{$CellContext`x$$, $CellContext`y$$, $CellContext`z$$, \
+$CellContext`x$$}], 
+          RGBColor[0.48, 0.11, 0.56], 
+          Polygon[$CellContext`s], Black, 
+          Line[$CellContext`tri], 
+          RGBColor[1, 0.47, 0], 
+          PointSize[0.03], 
+          Point[$CellContext`ps]}, PlotRange -> 10, ImageSize -> {400, 400}]),
+       "Specifications" :> {{{$CellContext`a$$, {-7.12, -4.46}}, {-9, -9}, {9,
+          9}, ControlType -> 
+         Locator}, {{$CellContext`b$$, {-3.2800000000000002`, 
+          5.}}, {-9, -9}, {9, 9}, ControlType -> 
+         Locator}, {{$CellContext`c$$, {-9, 3.76}}, {-9, -9}, {9, 9}, 
+         ControlType -> 
+         Locator}, {{$CellContext`x$$, {
+          9., -1.5599999999999996`}}, {-9, -9}, {9, 9}, ControlType -> 
+         Locator}, {{$CellContext`y$$, {
+          2.3200000000000003`, -0.2400000000000002}}, {-9, -9}, {9, 9}, 
+         ControlType -> 
+         Locator}, {{$CellContext`z$$, {
+          8.260000000000002, -4.46}}, {-9, -9}, {9, 9}, ControlType -> 
+         Locator}}, 
+      "Options" :> {
+       TrackedSymbols -> Manipulate, AutorunSequencing -> {1, 2, 4}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{488., {249., 258.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->3558391,ExpressionUUID->"9c366b7d-fb10-4cff-bcb7-beff15672e8c"]
+}, Open  ]],
+
+Cell["", "DetailsSection",ExpressionUUID->"0fd5e790-0533-4e3a-9868-e040799d7087"],
+
+Cell[CellGroupData[{
+
+Cell["", "ControlSuggestionsSection",ExpressionUUID->"5364f0d8-ff88-428c-9cff-45c81796f262"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[
+   " Resize Images",ExpressionUUID->"710040de-2d4e-4ce9-932c-a1ff7f5e607e"]}],
+  "\"Click inside an image to reveal its orange resize frame.\\nDrag any of \
+the orange resize handles to resize the image.\"",
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->
+  "ResizeImages",ExpressionUUID->"ff11eba2-3943-402f-9796-4d9739042c82"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[
+   " Rotate and Zoom in 3D",ExpressionUUID->
+    "08b759a8-21c2-4995-b92d-81c248cef6b9"]}],
+  RowBox[{
+   "\"Drag a 3D graphic to rotate it. Starting the drag near the center \
+tumbles\\nthe graphic; starting near a corner turns it parallel to the plane \
+of the screen.\\nHold down \"", 
+    FrameBox[
+    "Ctrl", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" (or \"", 
+    FrameBox[
+    "Cmd", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" on Mac) and drag up and down to zoom.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->
+  "RotateAndZoomIn3D",ExpressionUUID->"aa325243-942c-4383-a01c-16da768f2ac5"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[
+   " Drag Locators",ExpressionUUID->"0fa4da31-3b60-44e3-b205-6d68f84f9019"]}],
+  RowBox[{"\"Drag any locator (\"", 
+    GraphicsBox[
+     LocatorBox[
+      Scaled[{0.5, 0.5}]], ImageSize -> 20], 
+    "\", etc.) to move it around.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.35696210375764*^9, 3.417628066025045*^9},
+ FontFamily->"Verdana",
+ CellTags->
+  "DragLocators",ExpressionUUID->"69352faf-9a81-4415-9459-3edf108ea88f"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[
+   " Create and Delete Locators",ExpressionUUID->
+    "7e94c85a-d356-482b-bf21-148d38364ddd"]}],
+  RowBox[{"\"Insert a new locator in the graphic by holding down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], 
+    "\" key\\nand clicking where you want it to be. Delete a locator by \
+clicking it\\nwhile holding down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" key.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->
+  "CreateAndDeleteLocators",ExpressionUUID->"4c56a43c-3005-4a1f-9729-\
+27f84cd05f50"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[
+   " Slider Zoom",ExpressionUUID->"92dce804-1cee-453a-a9e4-da3cd2ed6370"]}],
+  RowBox[{"\"Hold down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], 
+    "\" key while moving a slider to make fine adjustments in the slider \
+value.\\nHold \"", 
+    FrameBox[
+    "Ctrl", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" and/or \"", 
+    FrameBox[
+    "Shift", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" at the same time as \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" to make ever finer adjustments.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->
+  "SliderZoom",ExpressionUUID->"b58f2c7f-db1b-4297-922d-dabc911cb460"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[
+   " Gamepad Controls",ExpressionUUID->
+    "889f488e-0efe-4c30-8519-270627b8f014"]}],
+  "\"Control this Demonstration with a gamepad or other\\nhuman interface \
+device connected to your computer.\"",
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.35696210375764*^9, 3.3895522232313623`*^9},
+ FontFamily->"Verdana",
+ CellTags->
+  "GamepadControls",ExpressionUUID->"f8967e1e-58c4-48a3-9bd6-0d5716c03216"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[
+   " Automatic Animation",ExpressionUUID->
+    "bfe13524-699b-4758-a9b2-5fa1e781a7cf"]}],
+  RowBox[{"\"Animate a slider in this Demonstration by clicking the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJzzTSzJSM1NLMlMTlRwL0osyMhMLlZwyy8CCjEzMjAwcIKwAgOI/R/IhBKc\n\
+/4EAyGAG0f+nTZsGwgysIJIRKsWKLAXGIHFmEpUgLADxWUAkI24jZs+eTaEt\n\
+IG+wQKRmzJgBlYf5lhEA30OqWA=="], "Graphics", ImageSize -> {9, 9}, ImageMargins -> 
+      0], BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"button\\nnext to the slider, and then clicking the play button that \
+appears.\\nAnimate all controls by selecting \"", 
+    StyleBox["Autorun", FontWeight -> "Bold"], "\" from the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJyNULENwyAQfEySIlMwTVJlCGRFsosokeNtqBmDBagoaZjAI1C8/8GUUUC6\n\
+57h7cQ8PvU7Pl17nUav7oj/TPH7V7b2QJAUAXBkKmCPRowxICy64bRvGGNF7\n\
+X8CctGoDSN4xhIDGGDhzFXwUh3/ClBKrDQPmnGXtI6u0OOd+tZBVUqy1xSaH\n\
+UqiK6pPe4XdEdAz6563tx/gejuORGMxJaz8mdpJn7hc="], "Graphics", 
+      ImageSize -> {10, 10}, ImageMargins -> 0], BoxBaselineShift -> 
+     0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"menu.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->
+  "AutomaticAnimation",ExpressionUUID->"11f942e2-3e43-4690-9e44-77ee88e1bdbc"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[
+   " Bookmark Animation",ExpressionUUID->
+    "7be69167-d262-44e3-9f25-4155f55726cd"]}],
+  RowBox[{
+   "\"See a prepared animation of this Demonstration by selecting\\n\"", 
+    StyleBox["Animate Bookmarks", FontWeight -> "Bold"], "\" from the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJyNULENwyAQfEySIlMwTVJlCGRFsosokeNtqBmDBagoaZjAI1C8/8GUUUC6\n\
+57h7cQ8PvU7Pl17nUav7oj/TPH7V7b2QJAUAXBkKmCPRowxICy64bRvGGNF7\n\
+X8CctGoDSN4xhIDGGDhzFXwUh3/ClBKrDQPmnGXtI6u0OOd+tZBVUqy1xSaH\n\
+UqiK6pPe4XdEdAz6563tx/gejuORGMxJaz8mdpJn7hc="], "Graphics", 
+      ImageSize -> {10, 10}, ImageMargins -> 0], BoxBaselineShift -> 
+     0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"menu.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->
+  "BookmarkAnimation",ExpressionUUID->"a6ba8eea-a514-401f-9a7a-c7926e409e31"]
+}, Open  ]],
+
+Cell["", "SearchTermsSection",ExpressionUUID->"f020e182-d1a1-41b6-99d0-76fed9f6ae80"],
+
+Cell[CellGroupData[{
+
+Cell["", "RelatedLinksSection",ExpressionUUID->"e5e13edf-a070-4d42-abb9-1c251d084d64"],
+
+Cell[TextData[ButtonBox["Vector Addition",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["http://mathworld.wolfram.com/VectorAddition.html"], 
+   None}]], "RelatedLinks",
+ CellID->49495640,ExpressionUUID->"816a25b6-4c6e-4afe-9424-0f36ab63b33d"],
+
+Cell[TextData[ButtonBox["Minkowski Sum",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["http://mathworld.wolfram.com/MinkowskiSum.html"], 
+   None}]], "RelatedLinks",
+ CellID->39864637,ExpressionUUID->"affbaa4c-97f6-4717-b750-ca394640a5c5"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "AuthorSection",ExpressionUUID->"d4d93fa5-d28d-4c65-b420-cc39b24229e6"],
+
+Cell[TextData[{
+ "Contributed by: ",
+ ButtonBox["George Beck",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/author.html?author=George+Beck"], 
+    None},
+  ButtonNote->
+   "http://demonstrations.wolfram.com/author.html?author=George+Beck"]
+}], "Author",
+ CellChangeTimes->{3.35696210375764*^9, 
+  3.4176281150259857`*^9},ExpressionUUID->"4f351fd1-8b70-4be8-ab0c-\
+68511de3ba7d"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1536, 791},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (March 6, 2018)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Demonstration.nb", 
+  CharacterEncoding -> "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ResizeImages"->{
+  Cell[50091, 1032, 429, 10, 33, "ControlSuggestions",ExpressionUUID->"ff11eba2-3943-402f-9796-4d9739042c82",
+   CellTags->"ResizeImages"]},
+ "RotateAndZoomIn3D"->{
+  Cell[50523, 1044, 800, 19, 33, "ControlSuggestions",ExpressionUUID->"aa325243-942c-4383-a01c-16da768f2ac5",
+   CellTags->"RotateAndZoomIn3D"]},
+ "DragLocators"->{
+  Cell[51326, 1065, 519, 14, 33, "ControlSuggestions",ExpressionUUID->"69352faf-9a81-4415-9459-3edf108ea88f",
+   CellTags->"DragLocators"]},
+ "CreateAndDeleteLocators"->{
+  Cell[51848, 1081, 761, 19, 33, "ControlSuggestions",ExpressionUUID->"4c56a43c-3005-4a1f-9729-27f84cd05f50",
+   CellTags->"CreateAndDeleteLocators"]},
+ "SliderZoom"->{
+  Cell[52612, 1102, 961, 23, 33, "ControlSuggestions",ExpressionUUID->"b58f2c7f-db1b-4297-922d-dabc911cb460",
+   CellTags->"SliderZoom"]},
+ "GamepadControls"->{
+  Cell[53576, 1127, 491, 12, 33, "ControlSuggestions",ExpressionUUID->"f8967e1e-58c4-48a3-9bd6-0d5716c03216",
+   CellTags->"GamepadControls"]},
+ "AutomaticAnimation"->{
+  Cell[54070, 1141, 1534, 34, 33, "ControlSuggestions",ExpressionUUID->"11f942e2-3e43-4690-9e44-77ee88e1bdbc",
+   CellTags->"AutomaticAnimation"]},
+ "BookmarkAnimation"->{
+  Cell[55607, 1177, 1004, 24, 33, "ControlSuggestions",ExpressionUUID->"a6ba8eea-a514-401f-9a7a-c7926e409e31",
+   CellTags->"BookmarkAnimation"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ResizeImages", 58278, 1257},
+ {"RotateAndZoomIn3D", 58443, 1260},
+ {"DragLocators", 58608, 1263},
+ {"CreateAndDeleteLocators", 58779, 1266},
+ {"SliderZoom", 58948, 1269},
+ {"GamepadControls", 59109, 1272},
+ {"AutomaticAnimation", 59278, 1275},
+ {"BookmarkAnimation", 59450, 1278}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 259, 5, 112, "DemoTitle",ExpressionUUID->"658d6075-07f8-4da7-8e11-be33ec42c387"],
+Cell[829, 29, 88, 0, 421, "InitializationSection",ExpressionUUID->"97c3aa29-3024-4eb0-a752-63144ba81da3"],
+Cell[CellGroupData[{
+Cell[942, 33, 84, 0, 275, "ManipulateSection",ExpressionUUID->"23fd2d3e-710e-4f09-8268-2440a975018c"],
+Cell[CellGroupData[{
+Cell[1051, 37, 11016, 298, 1068, "Input",ExpressionUUID->"452c23f7-596c-49ea-b30e-7dbb7cddbb53"],
+Cell[12070, 337, 8659, 141, 715, "Output",ExpressionUUID->"228ac9cf-70f0-4337-b98e-6c088932cbbd",
+ CellID->346370698]
+}, Open  ]],
+Cell[20744, 481, 167, 2, 39, "Input",ExpressionUUID->"8eaac89c-389e-41c6-a972-4423ed4e7561",
+ CellID->104834879]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20948, 488, 91, 0, 256, "ManipulateCaptionSection",ExpressionUUID->"f6e8fdb8-5507-4dff-9f24-cec1c0930b21"],
+Cell[21042, 490, 1174, 30, 34, "ManipulateCaption",ExpressionUUID->"f8143c75-1099-4023-918a-a638a2c5a563",
+ CellID->60545480],
+Cell[22219, 522, 502, 9, 54, "ManipulateCaption",ExpressionUUID->"4482fec9-3e4f-47a7-8737-3a9ec6121a35",
+ CellID->473521991]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22758, 536, 83, 0, 259, "ThumbnailSection",ExpressionUUID->"ee4125b5-05cc-41e0-bdd6-b09644c8250b"],
+Cell[22844, 538, 6714, 117, 715, "Output",ExpressionUUID->"88e4eb31-9ec3-4463-b888-61388ff0d6ee",
+ CellID->680574023]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29595, 660, 83, 0, 206, "SnapshotsSection",ExpressionUUID->"e635b158-f2d0-48bc-9b8a-9a1cb4522cd4"],
+Cell[29681, 662, 6737, 120, 700, "Output",ExpressionUUID->"7ed467c1-1ebf-406e-bf7d-7a014ba7eef6",
+ CellID->103165097],
+Cell[36421, 784, 6710, 117, 700, "Output",ExpressionUUID->"9e3c405a-adf8-44ad-aff6-79d832687add",
+ CellID->95190139],
+Cell[43134, 903, 6741, 120, 703, "Output",ExpressionUUID->"9c366b7d-fb10-4cff-bcb7-beff15672e8c",
+ CellID->3558391]
+}, Open  ]],
+Cell[49890, 1026, 81, 0, 348, "DetailsSection",ExpressionUUID->"0fd5e790-0533-4e3a-9868-e040799d7087"],
+Cell[CellGroupData[{
+Cell[49996, 1030, 92, 0, 161, "ControlSuggestionsSection",ExpressionUUID->"5364f0d8-ff88-428c-9cff-45c81796f262"],
+Cell[50091, 1032, 429, 10, 33, "ControlSuggestions",ExpressionUUID->"ff11eba2-3943-402f-9796-4d9739042c82",
+ CellTags->"ResizeImages"],
+Cell[50523, 1044, 800, 19, 33, "ControlSuggestions",ExpressionUUID->"aa325243-942c-4383-a01c-16da768f2ac5",
+ CellTags->"RotateAndZoomIn3D"],
+Cell[51326, 1065, 519, 14, 33, "ControlSuggestions",ExpressionUUID->"69352faf-9a81-4415-9459-3edf108ea88f",
+ CellTags->"DragLocators"],
+Cell[51848, 1081, 761, 19, 33, "ControlSuggestions",ExpressionUUID->"4c56a43c-3005-4a1f-9729-27f84cd05f50",
+ CellTags->"CreateAndDeleteLocators"],
+Cell[52612, 1102, 961, 23, 33, "ControlSuggestions",ExpressionUUID->"b58f2c7f-db1b-4297-922d-dabc911cb460",
+ CellTags->"SliderZoom"],
+Cell[53576, 1127, 491, 12, 33, "ControlSuggestions",ExpressionUUID->"f8967e1e-58c4-48a3-9bd6-0d5716c03216",
+ CellTags->"GamepadControls"],
+Cell[54070, 1141, 1534, 34, 33, "ControlSuggestions",ExpressionUUID->"11f942e2-3e43-4690-9e44-77ee88e1bdbc",
+ CellTags->"AutomaticAnimation"],
+Cell[55607, 1177, 1004, 24, 33, "ControlSuggestions",ExpressionUUID->"a6ba8eea-a514-401f-9a7a-c7926e409e31",
+ CellTags->"BookmarkAnimation"]
+}, Open  ]],
+Cell[56626, 1204, 85, 0, 228, "SearchTermsSection",ExpressionUUID->"f020e182-d1a1-41b6-99d0-76fed9f6ae80"],
+Cell[CellGroupData[{
+Cell[56736, 1208, 86, 0, 189, "RelatedLinksSection",ExpressionUUID->"e5e13edf-a070-4d42-abb9-1c251d084d64"],
+Cell[56825, 1210, 245, 5, 33, "RelatedLinks",ExpressionUUID->"816a25b6-4c6e-4afe-9424-0f36ab63b33d",
+ CellID->49495640],
+Cell[57073, 1217, 241, 5, 33, "RelatedLinks",ExpressionUUID->"affbaa4c-97f6-4717-b750-ca394640a5c5",
+ CellID->39864637]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[57351, 1227, 80, 0, 204, "AuthorSection",ExpressionUUID->"d4d93fa5-d28d-4c65-b420-cc39b24229e6"],
+Cell[57434, 1229, 418, 12, 33, "Author",ExpressionUUID->"4f351fd1-8b70-4be8-ab0c-68511de3ba7d"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

@@ -1,0 +1,904 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     40228,        896]
+NotebookOptionsPosition[     38489,        861]
+NotebookOutlinePosition[     38861,        877]
+CellTagsIndexPosition[     38818,        874]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["InitializationObjects", "Subchapter",
+ CellChangeTimes->{{3.757180256578904*^9, 
+  3.7571802620182867`*^9}},ExpressionUUID->"7191af7f-125d-4485-8d6d-\
+98f0b7c83abf"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "Retruns", " ", "a", " ", "Normal", " ", "Vector", " ", "for", " ", "a", 
+    " ", "line", " ", "between", " ", "two", " ", "points"}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"normalVector", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"x2_", ",", "y2_"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x1_", ",", "y1_"}], "}"}]}], "}"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "v", "}"}], ",", 
+     RowBox[{
+      RowBox[{"v", "=", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"-", "y2"}], "+", "y1"}], ")"}], ",", 
+         RowBox[{"x2", "-", "x1"}]}], "}"}]}], " ", ";", " ", 
+      RowBox[{"v", "/", 
+       RowBox[{"Norm", "[", "v", "]"}]}]}]}], "]"}]}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.758244013242798*^9, 3.758244223526965*^9}, {
+  3.7582443028527613`*^9, 3.758244338688245*^9}, {3.758244425929058*^9, 
+  3.758244512901769*^9}, {3.7582445776385555`*^9, 3.7582446515484324`*^9}, {
+  3.7582446881180367`*^9, 3.758244722520277*^9}, {3.7582448644028497`*^9, 
+  3.7582448730796757`*^9}, {3.7582452595070972`*^9, 3.7582452630185404`*^9}, {
+  3.758246108779152*^9, 3.758246127066615*^9}, {3.7582466457237387`*^9, 
+  3.758246658306966*^9}, {3.758320520156993*^9, 3.758320542102289*^9}},
+ CellLabel->"In[12]:=",ExpressionUUID->"5eb2746f-34fb-4635-a47e-2d47906970a7"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"sortNormals", "[", 
+    RowBox[{"robot_", ",", "obstacle_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "robotLines", ",", "obstacleLines", ",", "robotNormal", ",", 
+       "obstacleNormal", ",", "AssignedNormal"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+      "Make", " ", "a", " ", "list", " ", "having", " ", "a", " ", "set", " ",
+        "of", " ", "two", " ", "points", " ", "a", " ", "element"}], " ", 
+      "*)"}], "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"robotLines", "=", " ", 
+       RowBox[{"Partition", "[", 
+        RowBox[{
+         RowBox[{"Append", "[", 
+          RowBox[{"robot", ",", 
+           RowBox[{"First", "[", "robot", "]"}]}], "]"}], ",", "2", ",", 
+         "1"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"obstacleLines", "=", 
+       RowBox[{"Partition", "[", 
+        RowBox[{
+         RowBox[{"Append", "[", 
+          RowBox[{"obstacle", ",", 
+           RowBox[{"First", "[", "obstacle", "]"}]}], "]"}], ",", "2", ",", 
+         "1"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{
+       "Get", " ", "the", " ", "Robot", " ", "and", " ", "Obstacle", " ", 
+        "Normals"}], "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"robotNormal", " ", "=", " ", 
+       RowBox[{"-", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"normalVector", "[", "#", "]"}], "&"}], "/@", 
+          "robotLines"}], ")"}]}]}], ";", " ", 
+      RowBox[{"(*", " ", 
+       RowBox[{"Robot", " ", "inwards"}], "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"obstacleNormal", "=", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"normalVector", "[", "#", "]"}], "&"}], "/@", 
+        "obstacleLines"}]}], ";", " ", 
+      RowBox[{"(*", " ", 
+       RowBox[{"Obstacle", " ", "Outwards"}], "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{"Label", " ", "the", " ", "Normals", " ", 
+        RowBox[{"w", ".", "r", ".", "t"}], " ", "the", " ", "Edges", " ", 
+        "of", " ", "robot", " ", "as", " ", "\[Alpha]", " ", "and", " ", 
+        "obstacle", " ", "as", " ", "beta"}], "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"AssignedNormal", " ", "=", 
+       RowBox[{"AssociationThread", "[", 
+        RowBox[{
+         RowBox[{"Flatten", "@", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"\"\<\[Alpha]\>\"", "<>", 
+                RowBox[{"ToString", "[", "#", "]"}]}], ")"}], "&"}], "/@", 
+             RowBox[{"Range", "[", 
+              RowBox[{"Length", "[", "robotNormal", "]"}], "]"}]}], ",", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"\"\<\[Beta]\>\"", "<>", 
+                RowBox[{"ToString", "[", "#", "]"}]}], ")"}], "&"}], "/@", 
+             RowBox[{"Range", "[", 
+              RowBox[{"Length", "[", "obstacleNormal", "]"}], "]"}]}]}], 
+           "}"}]}], "\[Rule]", 
+         RowBox[{"Flatten", "[", 
+          RowBox[{
+           RowBox[{"{", " ", 
+            RowBox[{"robotNormal", ",", "obstacleNormal"}], "}"}], ",", "1"}],
+           "]"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Sort", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"ArcTan", "[", 
+             RowBox[{
+              RowBox[{
+              "#", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+              ",", 
+              RowBox[{
+              "#", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}]}], 
+             "]"}], ",", "#"}], "}"}], "&"}], "/@", "AssignedNormal"}], ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"#1", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "<", 
+          RowBox[{"#2", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], "&"}]}], "]"}]}]}], 
+    "\[IndentingNewLine]", "]"}]}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.758382874988335*^9, 3.758383199600393*^9}, {
+  3.758383431653697*^9, 3.7583835070472565`*^9}, {3.7583840817310085`*^9, 
+  3.758384081950004*^9}, {3.758384608714542*^9, 3.7583846887563157`*^9}, {
+  3.758384728663155*^9, 3.758384821961562*^9}},
+ CellLabel->"In[13]:=",ExpressionUUID->"912c2493-d285-46a5-9faa-7e4929eedf33"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Demo code", "Subchapter",
+ CellChangeTimes->{{3.757180256578904*^9, 
+  3.757180270689994*^9}},ExpressionUUID->"9b28c73f-1167-455a-96c7-\
+03bd5a60eb8a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Manipulate", "[", 
+   RowBox[{
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "robot", ",", "obstacle", ",", "robotLines", ",", "obstacleLines", ",",
+         "robotNormal", ",", "obstacleNormal", ",", "robotArrows", ",", 
+        "obstacleArrows", ",", "robotAssignedNormal", ",", 
+        "obstacleAssignedNormal", ",", "mergedNormals", ",", "orderOfNormals",
+         ",", "sortedArrows", ",", "sortedSides", ",", "rc", ",", "oc", ",", 
+        "sortedNormals"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"r", "=", 
+        RowBox[{"{", 
+         RowBox[{"3", ",", "3"}], "}"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"o", "=", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "3"}], ",", "3"}], "}"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{"robot", " ", "=", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"r", "+", "#"}], " ", ")"}], "&"}], "/@", " ", 
+           RowBox[{"CirclePoints", "[", "3", "]"}]}]}], ";"}], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Generate", " ", "the", " ", "robot"}], " ", "&"}], " ", 
+         "obstacle", " ", "points"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"robot", " ", "=", 
+        RowBox[{"pts", "\[LeftDoubleBracket]", 
+         RowBox[{"1", ";;", "m"}], "\[RightDoubleBracket]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"obstacle", " ", "=", 
+        RowBox[{"pts", "\[LeftDoubleBracket]", 
+         RowBox[{"6", ";;", 
+          RowBox[{"n", "+", "5"}]}], "\[RightDoubleBracket]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", "Centorids", "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"rc", "=", 
+        RowBox[{"RegionCentroid", "[", 
+         RowBox[{"Polygon", "[", "robot", "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"oc", "=", 
+        RowBox[{"RegionCentroid", "[", 
+         RowBox[{"Polygon", "[", "obstacle", "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Make", " ", "a", " ", "list", " ", "having", " ", "a", " ", "set", 
+         " ", "of", " ", "two", " ", "points", " ", "a", " ", "element"}], 
+        " ", "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"robotLines", "=", " ", 
+        RowBox[{"Partition", "[", 
+         RowBox[{
+          RowBox[{"Append", "[", 
+           RowBox[{"robot", ",", 
+            RowBox[{"First", "[", "robot", "]"}]}], "]"}], ",", "2", ",", 
+          "1"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"obstacleLines", "=", 
+        RowBox[{"Partition", "[", 
+         RowBox[{
+          RowBox[{"Append", "[", 
+           RowBox[{"obstacle", ",", 
+            RowBox[{"First", "[", "obstacle", "]"}]}], "]"}], ",", "2", ",", 
+          "1"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Get", " ", "the", " ", "Robot", " ", "and", " ", "Obstacle", " ", 
+         "Normals"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"robotNormal", " ", "=", " ", 
+        RowBox[{"-", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"normalVector", "[", "#", "]"}], "&"}], "/@", 
+           "robotLines"}], ")"}]}]}], ";", " ", 
+       RowBox[{"(*", " ", 
+        RowBox[{"Robot", " ", "inwards"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"obstacleNormal", "=", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"normalVector", "[", "#", "]"}], "&"}], "/@", 
+         "obstacleLines"}]}], ";", " ", 
+       RowBox[{"(*", " ", 
+        RowBox[{"Obstacle", " ", "Outwards"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Make", " ", "Arrows", " ", "on", " ", "inside", " ", "the", " ", 
+         "polygons"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"robotArrows", "=", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Arrow", "[", 
+           RowBox[{"{", 
+            RowBox[{"rc", ",", 
+             RowBox[{"#", "+", "rc"}]}], "}"}], "]"}], "&"}], "/@", 
+         "robotNormal"}]}], ";", " ", "\[IndentingNewLine]", 
+       RowBox[{"obstacleArrows", " ", "=", " ", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Arrow", "[", 
+           RowBox[{"{", 
+            RowBox[{"oc", ",", 
+             RowBox[{"#", "+", "oc"}]}], "}"}], "]"}], "&"}], "/@", 
+         "obstacleNormal"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Assign", " ", "the", " ", "Edges", " ", "of", " ", "robot", " ", 
+         "with", " ", "\[Alpha]", " ", "and", " ", "obstacle", " ", 
+         RowBox[{"as", " ", "/", 
+          RowBox[{"[", "Beta", "]"}]}]}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"robotAssignedNormal", " ", "=", 
+        RowBox[{"AssociationThread", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"\"\<\[Alpha]\>\"", "<>", 
+              RowBox[{"ToString", "[", "#", "]"}]}], ")"}], "&"}], "/@", 
+           RowBox[{"Range", "[", 
+            RowBox[{"Length", "[", "robotNormal", "]"}], "]"}]}], "\[Rule]", 
+          " ", "robotNormal"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"obstacleAssignedNormal", " ", "=", 
+        RowBox[{"AssociationThread", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"\"\<\[Beta]\>\"", "<>", 
+              RowBox[{"ToString", "[", "#", "]"}]}], ")"}], "&"}], "/@", 
+           RowBox[{"Range", "[", 
+            RowBox[{"Length", "[", "obstacleNormal", "]"}], "]"}]}], 
+          "\[Rule]", " ", "obstacleNormal"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Merge", " ", "the", " ", "Normals"}], " ", "&"}], " ", 
+         "add", " ", "the", " ", "angles", " ", "in", " ", "the", " ", 
+         "value", " ", "list"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"mergedNormals", " ", "=", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"ArcTan", "[", 
+             RowBox[{
+              RowBox[{
+              "#", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+              ",", 
+              RowBox[{
+              "#", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}]}], 
+             "]"}], ",", "#"}], "}"}], "&"}], "/@", 
+         RowBox[{"Join", " ", "[", 
+          RowBox[{"robotAssignedNormal", ",", "obstacleAssignedNormal"}], 
+          "]"}]}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Sort", " ", "the", " ", "Normals", " ", "based", " ", "on", " ", 
+         "angles"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"orderOfNormals", " ", "=", " ", 
+        RowBox[{"Sort", "[", 
+         RowBox[{"mergedNormals", ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"#1", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "<", 
+            RowBox[{"#2", "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}], "&"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{"Keys", "[", "orderOfNormals", "]"}], 
+        RowBox[{"(*", 
+         RowBox[{
+         "They", " ", "are", " ", "not", " ", "sorted", " ", "properly"}], 
+         "*)"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{"Make", " ", "Arrows"}], "*)"}], " ", "\[IndentingNewLine]", 
+       RowBox[{"sortedNormals", "=", 
+        RowBox[{"sortNormals", "[", 
+         RowBox[{"robot", ",", "obstacle"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"sortedArrows", "=", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Arrow", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "0"}], "}"}], ",", 
+             RowBox[{
+             "#", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}]}], 
+            "}"}], "]"}], "&"}], "/@", 
+         RowBox[{"Values", "[", "orderOfNormals", "]"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{"Draw", " ", "Text"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"robotlabel", " ", "=", " ", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"Text", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Keys", "[", "robotAssignedNormal", "]"}], 
+             "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], ",", 
+            RowBox[{"(", 
+             RowBox[{"rc", "+", 
+              RowBox[{"1.2", 
+               RowBox[{
+               "robotAssignedNormal", "\[LeftDoubleBracket]", "i", 
+                "\[RightDoubleBracket]"}]}]}], ")"}]}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "robotAssignedNormal", "]"}], ",", "1"}], 
+           "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"obstcalelabel", " ", "=", " ", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"Text", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Keys", "[", "obstacleAssignedNormal", "]"}], 
+             "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], ",", 
+            RowBox[{"(", 
+             RowBox[{"oc", "+", 
+              RowBox[{"1.2", 
+               RowBox[{
+               "obstacleAssignedNormal", "\[LeftDoubleBracket]", "i", 
+                "\[RightDoubleBracket]"}]}]}], ")"}]}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "obstacleAssignedNormal", "]"}], ",", 
+            "1"}], "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"sortedSides", " ", "=", " ", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"Text", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Keys", "[", "orderOfNormals", "]"}], 
+             "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], ",", 
+            RowBox[{"1.2", 
+             RowBox[{"orderOfNormals", "\[LeftDoubleBracket]", 
+              RowBox[{"i", ",", "2"}], "\[RightDoubleBracket]"}]}]}], "]"}], 
+          ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "orderOfNormals", "]"}], ",", "1"}], 
+           "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{"sortedSides", " ", "=", " ", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"Text", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Keys", "[", "sortedNormals", "]"}], 
+               "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], ",", 
+              RowBox[{"1.2", 
+               RowBox[{"sortedNormals", "\[LeftDoubleBracket]", 
+                RowBox[{"i", ",", "2"}], "\[RightDoubleBracket]"}]}]}], "]"}],
+             ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", 
+              RowBox[{"Length", "[", "sortedNormals", "]"}], ",", "1"}], 
+             "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", "*)"}], 
+       RowBox[{"Graphics", "[", "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EdgeForm", "[", "Thin", "]"}], "\[IndentingNewLine]", ",", 
+          RowBox[{"{", 
+           RowBox[{"LightBlue", ",", " ", 
+            RowBox[{"Polygon", "@", "robot"}]}], "}"}], "\[IndentingNewLine]",
+           ",", 
+          RowBox[{"{", 
+           RowBox[{"LightRed", ",", " ", 
+            RowBox[{"Polygon", "@", "obstacle"}]}], "}"}], 
+          "\[IndentingNewLine]", ",", 
+          RowBox[{"{", 
+           RowBox[{
+           "obstacleArrows", ",", "robotArrows", ",", "robotlabel", ",", 
+            "obstcalelabel"}], "}"}], "\[IndentingNewLine]", ",", 
+          RowBox[{"{", 
+           RowBox[{"sortedArrows", ",", "sortedSides"}], "}"}], 
+          "\[IndentingNewLine]", ",", 
+          RowBox[{"{", 
+           RowBox[{"White", ",", 
+            RowBox[{"Disk", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", "0"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"0.5", ",", "0.5"}], "}"}]}], "]"}]}], "}"}]}], 
+         "\[IndentingNewLine]", "}"}], "]"}]}]}], "]"}], 
+    "\[IndentingNewLine]", ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"pts", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0.5", ",", "3.24"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0.41", ",", "2.25"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"1.565", ",", "2.08"}], "}"}], ",", " ", "\n", "  ", 
+          RowBox[{"{", 
+           RowBox[{"1.465", ",", "3.54"}], "}"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"0.735", ",", "3.59"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "2.4"}], ",", "2.19"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "2.048"}], ",", "3.30"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "3"}], ",", "4"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "3.95"}], ",", "3.30"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "3.5"}], ",", "2.13"}], "}"}]}], "}"}]}], "}"}], 
+      "\[IndentingNewLine]", ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "5"}], ",", 
+        RowBox[{"-", "5"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"5", ",", "5"}], "}"}], ",", "Locator", ",", 
+      RowBox[{"Appearance", "\[Rule]", "None"}]}], "}"}], 
+    "\[IndentingNewLine]", ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"m", ",", "3", ",", "\"\<Robot Edges\>\""}], "}"}], ",", "3", 
+      ",", "5", ",", "1", ",", "Setter"}], "}"}], "\[IndentingNewLine]", ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"n", ",", "4", ",", "\"\<Obstacle Edges\>\""}], "}"}], ",", 
+      "3", ",", "5", ",", "1", ",", "Setter"}], "}"}]}], 
+   "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.758244013242798*^9, 3.758244223526965*^9}, {
+   3.7582443028527613`*^9, 3.758244338688245*^9}, {3.758244425929058*^9, 
+   3.758244512901769*^9}, {3.7582445776385555`*^9, 3.7582446515484324`*^9}, {
+   3.7582446881180367`*^9, 3.7582447011682067`*^9}, {3.758244741159774*^9, 
+   3.7582447427481728`*^9}, {3.758244897827222*^9, 3.7582449427648325`*^9}, 
+   3.7582450338561773`*^9, {3.7582450723900375`*^9, 3.758245376939286*^9}, {
+   3.7582454127923746`*^9, 3.758245418840929*^9}, {3.758245487555586*^9, 
+   3.7582457189223957`*^9}, {3.7582458037628784`*^9, 3.75824582301553*^9}, {
+   3.7582461310548773`*^9, 3.758246376619952*^9}, {3.7582464833636045`*^9, 
+   3.758246493524603*^9}, {3.7582466644188766`*^9, 3.7582466886831155`*^9}, {
+   3.7582469319689493`*^9, 3.758246950650169*^9}, {3.758246981965933*^9, 
+   3.758247004255974*^9}, {3.758247052738165*^9, 3.7582471933759937`*^9}, {
+   3.7582472258811474`*^9, 3.7582472841607633`*^9}, {3.758247399558337*^9, 
+   3.7582474115575876`*^9}, {3.758247769367564*^9, 3.7582478121420403`*^9}, {
+   3.758248826678206*^9, 3.7582488768324785`*^9}, {3.758248910247943*^9, 
+   3.758248990249359*^9}, {3.7582490248299184`*^9, 3.758249031193923*^9}, {
+   3.758249126522832*^9, 3.758249220310568*^9}, {3.7582492940395775`*^9, 
+   3.7582493455723658`*^9}, {3.75824937740765*^9, 3.758249421946067*^9}, {
+   3.758249659747467*^9, 3.758249709112359*^9}, {3.7582498646529665`*^9, 
+   3.758249918629094*^9}, {3.758249957676193*^9, 3.7582500773294773`*^9}, {
+   3.7582501371624537`*^9, 3.7582504160827117`*^9}, {3.758250450888992*^9, 
+   3.7582507180352783`*^9}, {3.758250766467561*^9, 3.758250767794213*^9}, {
+   3.7582508314678597`*^9, 3.7582509394957314`*^9}, 3.758251032505909*^9, {
+   3.7582511102758245`*^9, 3.7582511302663593`*^9}, 3.7582511627673407`*^9, {
+   3.7582512154158545`*^9, 3.7582512225755196`*^9}, {3.7582512586809254`*^9, 
+   3.7582513506038527`*^9}, {3.758251517549238*^9, 3.758251555254428*^9}, 
+   3.7582516305485506`*^9, {3.75825174963315*^9, 3.7582517515525227`*^9}, {
+   3.758251785369628*^9, 3.7582518031581945`*^9}, {3.7582518362593527`*^9, 
+   3.758251842260764*^9}, {3.7582518758945613`*^9, 3.758251894909044*^9}, {
+   3.7582520990768814`*^9, 3.7582523240060797`*^9}, {3.7582523770141296`*^9, 
+   3.7582523771247234`*^9}, {3.7582524099836597`*^9, 3.758252530489271*^9}, {
+   3.758308978470709*^9, 3.758309045651348*^9}, {3.758320023724322*^9, 
+   3.758320043050688*^9}, {3.7583201062666564`*^9, 3.7583201328684907`*^9}, {
+   3.758320224542421*^9, 3.7583202287032948`*^9}, {3.75832026232041*^9, 
+   3.7583202696597843`*^9}, {3.7583204718232403`*^9, 3.758320485779922*^9}, {
+   3.758320549376875*^9, 3.7583208967492404`*^9}, {3.7583209385893216`*^9, 
+   3.7583209458290033`*^9}, {3.758367256264729*^9, 3.758367272003783*^9}, {
+   3.758367358448435*^9, 3.758367476080681*^9}, {3.758367554512781*^9, 
+   3.758367599723469*^9}, {3.7583676410279408`*^9, 3.7583676875005603`*^9}, {
+   3.758367732422371*^9, 3.7583678455783296`*^9}, {3.7583679586764417`*^9, 
+   3.758367962842985*^9}, 3.758368022021866*^9, {3.758368147649931*^9, 
+   3.758368205114109*^9}, {3.7583682680555906`*^9, 3.7583682799362297`*^9}, {
+   3.7583683201878133`*^9, 3.7583685090291862`*^9}, {3.758368539695402*^9, 
+   3.758368547838767*^9}, {3.758368600287249*^9, 3.7583686206385083`*^9}, {
+   3.758368712404154*^9, 3.758368961116106*^9}, {3.758369085839195*^9, 
+   3.7583691372230806`*^9}, {3.758369286345622*^9, 3.758369539535203*^9}, {
+   3.758369599477375*^9, 3.758369617232326*^9}, {3.758369652652939*^9, 
+   3.7583697126948843`*^9}, {3.7583697872395563`*^9, 3.758369843097102*^9}, {
+   3.758369876299859*^9, 3.758369885860611*^9}, {3.7583699196980453`*^9, 
+   3.758370003063049*^9}, {3.7583700439739017`*^9, 3.758370052413802*^9}, 
+   3.7583700930105376`*^9, {3.758370135655698*^9, 3.7583701794157825`*^9}, {
+   3.7583702495252028`*^9, 3.758370273427171*^9}, {3.758381541901926*^9, 
+   3.7583815820200634`*^9}, {3.7583816543100567`*^9, 
+   3.7583816805096073`*^9}, {3.7583817795987177`*^9, 3.7583818028439026`*^9}, 
+   3.7583818805717473`*^9, {3.7583819118782387`*^9, 3.758381967104381*^9}, {
+   3.7583820169155226`*^9, 3.758382088550706*^9}, {3.758382172756156*^9, 
+   3.758382183350507*^9}, {3.7583822524986553`*^9, 3.758382295015896*^9}, {
+   3.7583823621350822`*^9, 3.7583823794441924`*^9}, {3.7583824229114337`*^9, 
+   3.7583825321631565`*^9}, {3.758382583324538*^9, 3.7583825955172462`*^9}, {
+   3.7583826349029293`*^9, 3.7583826406870255`*^9}, {3.7583827002961073`*^9, 
+   3.7583827185118585`*^9}, {3.7583832330479865`*^9, 3.75838331894621*^9}, 
+   3.7583835141902404`*^9, {3.758383608544114*^9, 3.7583837073866835`*^9}, {
+   3.7583849612615995`*^9, 3.758384998307265*^9}, 3.7583851317177963`*^9, 
+   3.7583911261628866`*^9, {3.758391758253442*^9, 3.7583917783019476`*^9}, {
+   3.758391811095084*^9, 3.758391883162505*^9}, 3.7583919748198233`*^9, {
+   3.7583920583435345`*^9, 3.75839217377385*^9}},
+ CellLabel->"In[24]:=",ExpressionUUID->"232528d5-f3f8-4a82-a264-a771d3fa0ea3"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`m$$ = 3, $CellContext`n$$ = 
+    4, $CellContext`pts$$ = {{0.5, 3.24}, {0.41, 2.25}, {1.565, 2.08}, {1.465,
+      3.54}, {0.735, 3.59}, {-2.67, 2.42}, {-2.048, 3.3}, {-3, 4}, {-3.95, 
+     3.3}, {-3.5, 2.13}}, Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`pts$$], {{0.5, 3.24}, {0.41, 2.25}, {1.565, 2.08}, {
+        1.465, 3.54}, {0.735, 3.59}, {-2.4, 2.19}, {-2.048, 3.3}, {-3, 
+        4}, {-3.95, 3.3}, {-3.5, 2.13}}}, {-5, -5}, {5, 5}}, {{
+       Hold[$CellContext`m$$], 3, "Robot Edges"}, 3, 5, 1}, {{
+       Hold[$CellContext`n$$], 4, "Obstacle Edges"}, 3, 5, 1}}, 
+    Typeset`size$$ = {432., {175., 180.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`pts$19623$$ = {0, 0}, $CellContext`m$19624$$ = 
+    0, $CellContext`n$19625$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`m$$ = 3, $CellContext`n$$ = 
+        4, $CellContext`pts$$ = {{0.5, 3.24}, {0.41, 2.25}, {1.565, 2.08}, {
+          1.465, 3.54}, {0.735, 3.59}, {-2.4, 2.19}, {-2.048, 3.3}, {-3, 
+          4}, {-3.95, 3.3}, {-3.5, 2.13}}}, "ControllerVariables" :> {
+        Hold[$CellContext`pts$$, $CellContext`pts$19623$$, {0, 0}], 
+        Hold[$CellContext`m$$, $CellContext`m$19624$$, 0], 
+        Hold[$CellContext`n$$, $CellContext`n$19625$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Module[{$CellContext`robot$, $CellContext`obstacle$, \
+$CellContext`robotLines$, $CellContext`obstacleLines$, \
+$CellContext`robotNormal$, $CellContext`obstacleNormal$, \
+$CellContext`robotArrows$, $CellContext`obstacleArrows$, \
+$CellContext`robotAssignedNormal$, $CellContext`obstacleAssignedNormal$, \
+$CellContext`mergedNormals$, $CellContext`orderOfNormals$, \
+$CellContext`sortedArrows$, $CellContext`sortedSides$, $CellContext`rc$, \
+$CellContext`oc$, $CellContext`sortedNormals$}, $CellContext`r = {3, 
+          3}; $CellContext`o = {-3, 3}; $CellContext`robot$ = 
+         Part[$CellContext`pts$$, 
+           Span[1, $CellContext`m$$]]; $CellContext`obstacle$ = 
+         Part[$CellContext`pts$$, 
+           Span[6, $CellContext`n$$ + 5]]; $CellContext`rc$ = RegionCentroid[
+           Polygon[$CellContext`robot$]]; $CellContext`oc$ = RegionCentroid[
+           Polygon[$CellContext`obstacle$]]; $CellContext`robotLines$ = 
+         Partition[
+           Append[$CellContext`robot$, 
+            First[$CellContext`robot$]], 2, 1]; $CellContext`obstacleLines$ = 
+         Partition[
+           Append[$CellContext`obstacle$, 
+            First[$CellContext`obstacle$]], 2, 
+           1]; $CellContext`robotNormal$ = -
+          Map[$CellContext`normalVector[#]& , $CellContext`robotLines$]; \
+$CellContext`obstacleNormal$ = 
+         Map[$CellContext`normalVector[#]& , $CellContext`obstacleLines$]; \
+$CellContext`robotArrows$ = 
+         Map[Arrow[{$CellContext`rc$, # + $CellContext`rc$}]& , \
+$CellContext`robotNormal$]; $CellContext`obstacleArrows$ = 
+         Map[Arrow[{$CellContext`oc$, # + $CellContext`oc$}]& , \
+$CellContext`obstacleNormal$]; $CellContext`robotAssignedNormal$ = 
+         AssociationThread[Map[StringJoin["\[Alpha]", 
+              ToString[#]]& , 
+             Range[
+              
+              Length[$CellContext`robotNormal$]]] -> \
+$CellContext`robotNormal$]; $CellContext`obstacleAssignedNormal$ = 
+         AssociationThread[Map[StringJoin["\[Beta]", 
+              ToString[#]]& , 
+             Range[
+              
+              Length[$CellContext`obstacleNormal$]]] -> \
+$CellContext`obstacleNormal$]; $CellContext`mergedNormals$ = Map[{
+            ArcTan[
+             Part[#, 1], 
+             Part[#, 2]], #}& , 
+           
+           Join[$CellContext`robotAssignedNormal$, \
+$CellContext`obstacleAssignedNormal$]]; $CellContext`orderOfNormals$ = 
+         Sort[$CellContext`mergedNormals$, Part[#, 1] < 
+           Part[#2, 
+             1]& ]; $CellContext`sortedNormals$ = \
+$CellContext`sortNormals[$CellContext`robot$, $CellContext`obstacle$]; \
+$CellContext`sortedArrows$ = Map[Arrow[{{0, 0}, 
+             Part[#, 2]}]& , 
+           Values[$CellContext`orderOfNormals$]]; $CellContext`robotlabel = 
+         Table[
+           Text[
+            Part[
+             
+             Keys[$CellContext`robotAssignedNormal$], $CellContext`i], \
+$CellContext`rc$ + 
+            1.2 Part[$CellContext`robotAssignedNormal$, $CellContext`i]], \
+{$CellContext`i, 1, 
+            Length[$CellContext`robotAssignedNormal$], 
+            1}]; $CellContext`obstcalelabel = Table[
+           Text[
+            Part[
+             
+             Keys[$CellContext`obstacleAssignedNormal$], $CellContext`i], \
+$CellContext`oc$ + 
+            1.2 Part[$CellContext`obstacleAssignedNormal$, $CellContext`i]], \
+{$CellContext`i, 1, 
+            Length[$CellContext`obstacleAssignedNormal$], 
+            1}]; $CellContext`sortedSides$ = Table[
+           Text[
+            Part[
+             Keys[$CellContext`orderOfNormals$], $CellContext`i], 1.2 
+            Part[$CellContext`orderOfNormals$, $CellContext`i, 
+              2]], {$CellContext`i, 1, 
+            Length[$CellContext`orderOfNormals$], 1}]; Graphics[{
+           EdgeForm[Thin], {LightBlue, 
+            Polygon[$CellContext`robot$]}, {LightRed, 
+            
+            Polygon[$CellContext`obstacle$]}, {$CellContext`obstacleArrows$, \
+$CellContext`robotArrows$, $CellContext`robotlabel, \
+$CellContext`obstcalelabel}, {$CellContext`sortedArrows$, \
+$CellContext`sortedSides$}, {White, 
+            Disk[{0, 0}, {0.5, 0.5}]}}]], 
+      "Specifications" :> {{{$CellContext`pts$$, {{0.5, 3.24}, {0.41, 2.25}, {
+           1.565, 2.08}, {1.465, 3.54}, {0.735, 3.59}, {-2.4, 2.19}, {-2.048, 
+           3.3}, {-3, 4}, {-3.95, 3.3}, {-3.5, 2.13}}}, {-5, -5}, {5, 5}, 
+         ControlType -> Locator, Appearance -> 
+         None}, {{$CellContext`m$$, 3, "Robot Edges"}, 3, 5, 1, ControlType -> 
+         Setter}, {{$CellContext`n$$, 4, "Obstacle Edges"}, 3, 5, 1, 
+         ControlType -> Setter}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{497., {247., 254.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.7583836092286463`*^9, 3.7583836198908176`*^9}, {
+   3.7583836650330524`*^9, 3.758383707991253*^9}, 3.758383761271534*^9, {
+   3.758383965263215*^9, 3.7583839802298775`*^9}, 3.7583848312403*^9, 
+   3.75838500207978*^9, 3.7583851344996104`*^9, 3.7583911582990475`*^9, 
+   3.7583918491469517`*^9, 3.7583918855117254`*^9, 3.758391979504221*^9, {
+   3.7583920853493137`*^9, 3.758392130029705*^9}, 3.758392174284271*^9},
+ CellLabel->"Out[24]=",ExpressionUUID->"126ffac6-47a3-4833-b4ea-25ce1a6ee42e"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","partw",
+   "\"Part \\!\\(\\*RowBox[{\\\"2\\\"}]\\) of \
+\\!\\(\\*RowBox[{\\\"normalVector\\\", \\\"[\\\", RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"-\\\", \\\"2.67`\\\"}], \
+\\\",\\\", \\\"2.42`\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"-\\\", \\\"2.048`\\\"}], \\\",\\\", \\\"3.3`\\\"}], \\\"}\
+\\\"}]}], \\\"}\\\"}], \\\"]\\\"}]\\) does not exist.\"",2,1,1,
+   25623598500093876335,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.758406442833349*^9},
+ CellLabel->"",ExpressionUUID->"db70447a-f378-42c0-b659-801c16b770a8"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","partw",
+   "\"Part \\!\\(\\*RowBox[{\\\"2\\\"}]\\) of \
+\\!\\(\\*RowBox[{\\\"normalVector\\\", \\\"[\\\", RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"-\\\", \\\"2.67`\\\"}], \
+\\\",\\\", \\\"2.42`\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"-\\\", \\\"2.048`\\\"}], \\\",\\\", \\\"3.3`\\\"}], \\\"}\
+\\\"}]}], \\\"}\\\"}], \\\"]\\\"}]\\) does not exist.\"",2,1,2,
+   25623598500093876335,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.758406442867258*^9},
+ CellLabel->"",ExpressionUUID->"eff79c8a-0b69-43dd-8723-831595c30178"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","partw",
+   "\"Part \\!\\(\\*RowBox[{\\\"2\\\"}]\\) of \
+\\!\\(\\*RowBox[{\\\"normalVector\\\", \\\"[\\\", RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"-\\\", \\\"2.67`\\\"}], \
+\\\",\\\", \\\"2.42`\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"-\\\", \\\"2.048`\\\"}], \\\",\\\", \\\"3.3`\\\"}], \\\"}\
+\\\"}]}], \\\"}\\\"}], \\\"]\\\"}]\\) does not exist.\"",2,1,3,
+   25623598500093876335,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7584064428822174`*^9},
+ CellLabel->"",ExpressionUUID->"4e1bb7ba-8558-407d-9cdb-c899dd54dedb"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General","stop",
+   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"Part\\\", \\\"::\\\", \
+\\\"partw\\\"}], \\\"MessageName\\\"]\\) will be suppressed during this \
+calculation.\"",2,1,4,25623598500093876335,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.758406442905156*^9},
+ CellLabel->"",ExpressionUUID->"53382f12-f83a-4b1e-9e52-5dd138543f42"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","partw",
+   "\"Part \\!\\(\\*RowBox[{\\\"2\\\"}]\\) of \
+\\!\\(\\*RowBox[{\\\"normalVector\\\", \\\"[\\\", RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"-\\\", \\\"2.67`\\\"}], \
+\\\",\\\", \\\"2.42`\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"-\\\", \\\"2.048`\\\"}], \\\",\\\", \\\"3.3`\\\"}], \\\"}\
+\\\"}]}], \\\"}\\\"}], \\\"]\\\"}]\\) does not exist.\"",2,1,5,
+   25623598500093876335,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.758406443021845*^9},
+ CellLabel->"",ExpressionUUID->"ea7be9c9-f56e-4f8e-a4ba-1f1a2301933d"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","partw",
+   "\"Part \\!\\(\\*RowBox[{\\\"2\\\"}]\\) of \
+\\!\\(\\*RowBox[{\\\"normalVector\\\", \\\"[\\\", RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"-\\\", \\\"2.67`\\\"}], \
+\\\",\\\", \\\"2.42`\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"-\\\", \\\"2.048`\\\"}], \\\",\\\", \\\"3.3`\\\"}], \\\"}\
+\\\"}]}], \\\"}\\\"}], \\\"]\\\"}]\\) does not exist.\"",2,1,6,
+   25623598500093876335,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7584064430358067`*^9},
+ CellLabel->"",ExpressionUUID->"81e23b01-1502-4e6f-aed0-1b082642ed47"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","partw",
+   "\"Part \\!\\(\\*RowBox[{\\\"2\\\"}]\\) of \
+\\!\\(\\*RowBox[{\\\"normalVector\\\", \\\"[\\\", RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"-\\\", \\\"2.67`\\\"}], \
+\\\",\\\", \\\"2.42`\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"-\\\", \\\"2.048`\\\"}], \\\",\\\", \\\"3.3`\\\"}], \\\"}\
+\\\"}]}], \\\"}\\\"}], \\\"]\\\"}]\\) does not exist.\"",2,1,7,
+   25623598500093876335,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.758406443051764*^9},
+ CellLabel->"",ExpressionUUID->"f2df0bb4-7c85-4013-9dee-937ad90aee0e"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General","stop",
+   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"Part\\\", \\\"::\\\", \
+\\\"partw\\\"}], \\\"MessageName\\\"]\\) will be suppressed during this \
+calculation.\"",2,1,8,25623598500093876335,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.758406443080687*^9},
+ CellLabel->"",ExpressionUUID->"6f0f44dc-1c8c-44c7-b7bf-deb31fa02218"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1536, 791},
+WindowMargins->{{-8, Automatic}, {Automatic, 0}},
+Magnification:>1.2 Inherited,
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (March 6, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 171, 3, 76, "Subchapter",ExpressionUUID->"7191af7f-125d-4485-8d6d-98f0b7c83abf"],
+Cell[754, 27, 1487, 36, 80, "Input",ExpressionUUID->"5eb2746f-34fb-4635-a47e-2d47906970a7",
+ InitializationCell->True],
+Cell[2244, 65, 4439, 109, 368, "Input",ExpressionUUID->"912c2493-d285-46a5-9faa-7e4929eedf33",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6720, 179, 157, 3, 76, "Subchapter",ExpressionUUID->"9b28c73f-1167-455a-96c7-03bd5a60eb8a"],
+Cell[CellGroupData[{
+Cell[6902, 186, 19391, 421, 1236, "Input",ExpressionUUID->"232528d5-f3f8-4a82-a264-a771d3fa0ea3"],
+Cell[26296, 609, 7471, 144, 523, "Output",ExpressionUUID->"126ffac6-47a3-4833-b4ea-25ce1a6ee42e"],
+Cell[33770, 755, 642, 12, 27, "Message",ExpressionUUID->"db70447a-f378-42c0-b659-801c16b770a8"],
+Cell[34415, 769, 642, 12, 27, "Message",ExpressionUUID->"eff79c8a-0b69-43dd-8723-831595c30178"],
+Cell[35060, 783, 644, 12, 27, "Message",ExpressionUUID->"4e1bb7ba-8558-407d-9cdb-c899dd54dedb"],
+Cell[35707, 797, 407, 8, 27, "Message",ExpressionUUID->"53382f12-f83a-4b1e-9e52-5dd138543f42"],
+Cell[36117, 807, 642, 12, 27, "Message",ExpressionUUID->"ea7be9c9-f56e-4f8e-a4ba-1f1a2301933d"],
+Cell[36762, 821, 644, 12, 27, "Message",ExpressionUUID->"81e23b01-1502-4e6f-aed0-1b082642ed47"],
+Cell[37409, 835, 642, 12, 27, "Message",ExpressionUUID->"f2df0bb4-7c85-4013-9dee-937ad90aee0e"],
+Cell[38054, 849, 407, 8, 27, "Message",ExpressionUUID->"6f0f44dc-1c8c-44c7-b7bf-deb31fa02218"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
