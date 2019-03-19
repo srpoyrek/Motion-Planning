@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    149046,       3054]
-NotebookOptionsPosition[    125747,       2572]
-NotebookOutlinePosition[    147230,       3010]
-CellTagsIndexPosition[    147156,       3005]
+NotebookDataLength[    162700,       3333]
+NotebookOptionsPosition[    139143,       2846]
+NotebookOutlinePosition[    160626,       3284]
+CellTagsIndexPosition[    160552,       3279]
 WindowTitle->Minkowski_Sum_Normal_Rev6.nb
 WindowFrame->Normal*)
 
@@ -47,8 +47,9 @@ Cell[BoxData[
      "]"}]}], ";"}], " "}]], "Input",
  InitializationCell->True,
  InitializationGroup->True,
- CellChangeTimes->{3.7612764783095455`*^9},
- CellLabel->"In[7]:=",
+ CellChangeTimes->{
+  3.7612764783095455`*^9, {3.7618672147740064`*^9, 3.76186721615232*^9}},
+ CellLabel->"In[1]:=",
  CellID->254152640,ExpressionUUID->"6e528893-f7ee-40c7-9deb-78be7673e08e"],
 
 Cell[BoxData[
@@ -118,7 +119,7 @@ Cell[BoxData[
      RowBox[{"0", ",", "1", ",", "step"}], "]"}]}]}]}]], "Input",
  InitializationCell->True,
  InitializationGroup->True,
- CellLabel->"In[14]:=",
+ CellLabel->"In[3]:=",
  CellID->221074263,ExpressionUUID->"c85c6f6a-d8e1-42d2-8f09-a0aeb6e9b573"],
 
 Cell[BoxData[
@@ -148,7 +149,7 @@ Cell[BoxData[
      RowBox[{"First", "@", "poly"}]}], "]"}]}]}]], "Input",
  InitializationCell->True,
  InitializationGroup->True,
- CellLabel->"In[10]:=",
+ CellLabel->"In[4]:=",
  CellID->72501454,ExpressionUUID->"b4a37082-2f2e-4562-a5ee-1a2758beee35"],
 
 Cell[BoxData[
@@ -175,7 +176,8 @@ Cell[BoxData[
       RowBox[{"x2", "-", "x1"}]}], "}"}], " ", "]"}]}]}]], "Input",
  InitializationCell->True,
  InitializationGroup->True,
- CellLabel->"In[11]:=",
+ CellChangeTimes->{{3.7619654414489536`*^9, 3.761965445594994*^9}},
+ CellLabel->"In[5]:=",
  CellID->260974026,ExpressionUUID->"4a71eaa6-15fe-4099-9e63-db235688a722"],
 
 Cell[BoxData[
@@ -198,7 +200,7 @@ Cell[BoxData[
      RowBox[{"y2", "-", "y1"}]}], "}"}]}]}]], "Input",
  InitializationCell->True,
  InitializationGroup->True,
- CellLabel->"In[12]:=",
+ CellLabel->"In[6]:=",
  CellID->429294093,ExpressionUUID->"253250fd-c3ce-4b2b-b5cb-645b39f63846"],
 
 Cell[BoxData[
@@ -366,8 +368,34 @@ Cell[BoxData[
       RowBox[{"Feb", " ", "12"}]}], ",", " ", "2019"}], "*)"}]}]}]], "Input",
  InitializationCell->True,
  InitializationGroup->True,
- CellLabel->"In[13]:=",
- CellID->57237067,ExpressionUUID->"0756fda0-57dc-487a-8c28-a3046723b272"]
+ CellLabel->"In[146]:=",
+ CellID->57237067,ExpressionUUID->"0756fda0-57dc-487a-8c28-a3046723b272"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Refrence", ":", 
+     RowBox[{"-", " ", "https"}], ":"}], "//", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"mathematica", ".", "stackexchange", ".", "com"}], "/", 
+        "questions"}], "/", "18647"}], "/", "how"}], "-", "to", "-", "check", 
+     "-", "if", "-", "an", "-", "expression", "-", "is", "-", "a", "-", 
+     "real", "-", "valued", "-", "number"}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"realQrm", "[", 
+     RowBox[{"_Real", "|", "_Integer", "|", "_Rational"}], "]"}], ":=", 
+    "True"}], "\n", 
+   RowBox[{
+    RowBox[{"realQrm", "[", "_", "]"}], ":=", "False"}]}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.762007996763587*^9, 3.762007996776552*^9}, 
+   3.7620080601470237`*^9, {3.762008711190383*^9, 3.762008723437642*^9}},
+ CellID->7629533,ExpressionUUID->"924f0dc4-fc65-47cb-8c49-c104e23e4f5a"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -401,8 +429,10 @@ Cell[BoxData[
        "sortedNormalObstacle", ",", "discretPolygon", ",", "sortedVectors", 
        ",", "pos", ",", "prev", ",", "minkowskiPointswithSide", ",", 
        "shiftedMinkwithSide", ",", "minkowskiSidesNormalArrows", ",", 
-       "shiftedMinkLineList", ",", "minkowskiSidesNormalLabels"}], "}"}], ",",
-      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       "shiftedMinkLineList", ",", "roboPosMink", ",", "obosPosMink", ",", 
+       "minkowskiRobotSidesLabels", ",", "minkowskiObstacleSidesLabels", ",", 
+       "orderOfNormalsKeys"}], "}"}], ",", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
      RowBox[{"(*", 
       RowBox[{
       "constrain", " ", "vertices", " ", "of", " ", "robot", " ", "and", " ", 
@@ -452,7 +482,6 @@ Cell[BoxData[
             RowBox[{"i", ",", "6", ",", 
              RowBox[{"n", "+", "5"}], ",", "1"}], "}"}]}], "]"}], ";"}]}], 
        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
-      "\[IndentingNewLine]", 
       RowBox[{"(*", 
        RowBox[{
         RowBox[{
@@ -462,7 +491,7 @@ Cell[BoxData[
       RowBox[{"roboconvex", " ", "=", 
        RowBox[{"If", "[", 
         RowBox[{
-         RowBox[{"m", "\[GreaterEqual]", " ", "3"}], ",", 
+         RowBox[{"m", "\[GreaterEqual]", "3"}], ",", 
          RowBox[{"Reverse", "@", 
           RowBox[{"(", 
            RowBox[{
@@ -482,6 +511,10 @@ Cell[BoxData[
           RowBox[{"1", ";;", 
            RowBox[{"m", "+", "1"}]}], "\[RightDoubleBracket]"}]}], "]"}]}], 
       ";", "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{"Print", "@", "roboconvex"}], ";"}], "*)"}], 
+      "\[IndentingNewLine]", 
       RowBox[{"oboconvex", " ", "=", 
        RowBox[{"If", "[", 
         RowBox[{
@@ -521,7 +554,7 @@ Cell[BoxData[
       RowBox[{"obstacle", "=", 
        RowBox[{"oboconvex", "\[LeftDoubleBracket]", 
         RowBox[{"1", ";;", "ol"}], "\[RightDoubleBracket]"}]}], ";", 
-      "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
       RowBox[{"(*", 
        RowBox[{
         RowBox[{
@@ -535,6 +568,65 @@ Cell[BoxData[
       "\[IndentingNewLine]", 
       RowBox[{"(*", 
        RowBox[{
+       "Correct", " ", "the", " ", "direction", " ", "for", " ", "triangle", 
+        " ", "when", " ", "it", " ", "is", " ", "flipped"}], "*)"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"m", "\[Equal]", "3"}], ",", " ", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"!", 
+            RowBox[{"realQrm", "@", 
+             RowBox[{"(", 
+              RowBox[{"ArcCos", "@", 
+               RowBox[{"VectorAngle", "[", 
+                RowBox[{
+                 RowBox[{"vector", "[", 
+                  RowBox[{"{", 
+                   RowBox[{"rc", ",", 
+                    RowBox[{"Median", "[", 
+                    RowBox[{"robot", "\[LeftDoubleBracket]", 
+                    RowBox[{"1", ";;", "2"}], "\[RightDoubleBracket]"}], 
+                    "]"}]}], "}"}], "]"}], ",", 
+                 RowBox[{"-", 
+                  RowBox[{"normalVector", "[", 
+                   RowBox[{"robot", "\[LeftDoubleBracket]", 
+                    RowBox[{"1", ";;", "2"}], "\[RightDoubleBracket]"}], 
+                   "]"}]}]}], "]"}]}], ")"}]}]}], ",", 
+           RowBox[{"robot", "=", 
+            RowBox[{"Reverse", "@", "robot"}]}]}], "]"}], ";"}]}], "]"}], ";",
+       "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"n", "\[Equal]", "3"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"!", 
+            RowBox[{"realQrm", "@", 
+             RowBox[{"(", 
+              RowBox[{"ArcCos", "@", 
+               RowBox[{"VectorAngle", "[", 
+                RowBox[{
+                 RowBox[{"vector", "[", 
+                  RowBox[{"{", 
+                   RowBox[{"oc", ",", 
+                    RowBox[{"Median", "[", 
+                    RowBox[{"obstacle", "\[LeftDoubleBracket]", 
+                    RowBox[{"1", ";;", "2"}], "\[RightDoubleBracket]"}], 
+                    "]"}]}], "}"}], "]"}], ",", 
+                 RowBox[{"-", 
+                  RowBox[{"normalVector", "[", 
+                   RowBox[{"obstacle", "\[LeftDoubleBracket]", 
+                    RowBox[{"1", ";;", "2"}], "\[RightDoubleBracket]"}], 
+                   "]"}]}]}], "]"}]}], ")"}]}]}], ",", 
+           RowBox[{"obstacle", "=", 
+            RowBox[{"Reverse", "@", "obstacle"}]}]}], "]"}], ";"}]}], "]"}], 
+      ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{
        "Get", " ", "the", " ", "Robot", " ", "and", " ", "Obstacle", " ", 
         "Normals"}], "*)"}], "\[IndentingNewLine]", 
       RowBox[{"robotNormal", " ", "=", " ", 
@@ -546,7 +638,7 @@ Cell[BoxData[
             RowBox[{
              RowBox[{"rl", "\[GreaterEqual]", "2"}], ",", 
              RowBox[{"(", 
-              RowBox[{"-", " ", 
+              RowBox[{"-", 
                RowBox[{"normalVector", "[", "#", "]"}]}], ")"}], ",", 
              RowBox[{"{", 
               RowBox[{"0", ",", "0"}], "}"}]}], "]"}], ",", 
@@ -559,7 +651,8 @@ Cell[BoxData[
               RowBox[{"0", ",", "0"}], "}"}]}], "]"}], ",", 
            "\"\<\[Alpha]\>\"", ",", "#"}], "}"}], "&"}], "/@", 
         RowBox[{"(", 
-         RowBox[{"lineList", "@", "robot"}], ")"}]}]}], ";", " ", 
+         RowBox[{"lineList", "@", "robot"}], ")"}]}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", " ", 
       RowBox[{"(*", " ", 
        RowBox[{
        "Robot", " ", "Normals", " ", "are", " ", "in", " ", "inward", " ", 
@@ -924,110 +1017,127 @@ Cell[BoxData[
        RowBox[{"Retouching", " ", "the", " ", "code", " ", "needed"}], "*)"}],
        "\[IndentingNewLine]", "\[IndentingNewLine]", 
       RowBox[{"(*", 
-       RowBox[{"Draw", " ", "Text"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"Draw", " ", "Labels", " ", "on", " ", 
+        RowBox[{"Robot", "/", "Obstacle"}]}], "*)"}], "\[IndentingNewLine]", 
       RowBox[{"robotlabel", " ", "=", " ", 
-       RowBox[{"Table", "[", 
+       RowBox[{"If", "[", 
         RowBox[{
-         RowBox[{"Text", "[", 
+         RowBox[{"rl", "\[GreaterEqual]", "2"}], ",", 
+         RowBox[{"Table", "[", 
           RowBox[{
-           RowBox[{
-            RowBox[{"Keys", "[", "robotAssignedNormal", "]"}], 
-            "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], ",", 
-           RowBox[{"(", 
+           RowBox[{"Text", "[", 
             RowBox[{
-             RowBox[{"Median", "@", 
+             RowBox[{
+              RowBox[{"Keys", "[", "robotAssignedNormal", "]"}], 
+              "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], ",", 
+             RowBox[{"(", 
               RowBox[{
-               RowBox[{
-               "robotAssignedNormal", "\[LeftDoubleBracket]", "i", 
-                "\[RightDoubleBracket]"}], "\[LeftDoubleBracket]", "4", 
-               "\[RightDoubleBracket]"}]}], "-", 
-             RowBox[{"0.2", 
-              RowBox[{
-               RowBox[{
-               "robotAssignedNormal", "\[LeftDoubleBracket]", "i", 
-                "\[RightDoubleBracket]"}], "\[LeftDoubleBracket]", "1", 
-               "\[RightDoubleBracket]"}]}]}], ")"}]}], "]"}], ",", 
-         RowBox[{"{", 
-          RowBox[{"i", ",", "1", ",", 
-           RowBox[{"Length", "[", "robotAssignedNormal", "]"}], ",", "1"}], 
-          "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+               RowBox[{"Median", "@", 
+                RowBox[{
+                 RowBox[{
+                 "robotAssignedNormal", "\[LeftDoubleBracket]", "i", 
+                  "\[RightDoubleBracket]"}], "\[LeftDoubleBracket]", "4", 
+                 "\[RightDoubleBracket]"}]}], "-", 
+               RowBox[{"0.2", 
+                RowBox[{
+                 RowBox[{
+                 "robotAssignedNormal", "\[LeftDoubleBracket]", "i", 
+                  "\[RightDoubleBracket]"}], "\[LeftDoubleBracket]", "1", 
+                 "\[RightDoubleBracket]"}]}]}], ")"}]}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{"Length", "[", "robotAssignedNormal", "]"}], ",", "1"}], 
+            "}"}]}], "]"}], ",", 
+         RowBox[{"{", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
       RowBox[{"obstaclelabel", " ", "=", " ", 
-       RowBox[{"Table", "[", 
+       RowBox[{"If", "[", 
         RowBox[{
-         RowBox[{"Text", "[", 
+         RowBox[{"ol", "\[GreaterEqual]", "2"}], ",", 
+         RowBox[{"Table", "[", 
           RowBox[{
-           RowBox[{
-            RowBox[{"Keys", "[", "obstacleAssignedNormal", "]"}], 
-            "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], ",", 
-           RowBox[{"(", 
+           RowBox[{"Text", "[", 
             RowBox[{
-             RowBox[{"Median", "@", 
+             RowBox[{
+              RowBox[{"Keys", "[", "obstacleAssignedNormal", "]"}], 
+              "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], ",", 
+             RowBox[{"(", 
               RowBox[{
-               RowBox[{
-               "obstacleAssignedNormal", "\[LeftDoubleBracket]", "i", 
-                "\[RightDoubleBracket]"}], "\[LeftDoubleBracket]", "4", 
-               "\[RightDoubleBracket]"}]}], "-", 
-             RowBox[{"0.2", 
-              RowBox[{
-               RowBox[{
-               "obstacleAssignedNormal", "\[LeftDoubleBracket]", "i", 
-                "\[RightDoubleBracket]"}], "\[LeftDoubleBracket]", "1", 
-               "\[RightDoubleBracket]"}]}]}], ")"}]}], "]"}], ",", 
-         RowBox[{"{", 
-          RowBox[{"i", ",", "1", ",", 
-           RowBox[{"Length", "[", "obstacleAssignedNormal", "]"}], ",", "1"}],
-           "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+               RowBox[{"Median", "@", 
+                RowBox[{
+                 RowBox[{
+                 "obstacleAssignedNormal", "\[LeftDoubleBracket]", "i", 
+                  "\[RightDoubleBracket]"}], "\[LeftDoubleBracket]", "4", 
+                 "\[RightDoubleBracket]"}]}], "-", 
+               RowBox[{"0.2", 
+                RowBox[{
+                 RowBox[{
+                 "obstacleAssignedNormal", "\[LeftDoubleBracket]", "i", 
+                  "\[RightDoubleBracket]"}], "\[LeftDoubleBracket]", "1", 
+                 "\[RightDoubleBracket]"}]}]}], ")"}]}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{"Length", "[", "obstacleAssignedNormal", "]"}], ",", 
+             "1"}], "}"}]}], "]"}], ",", 
+         RowBox[{"{", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
       "\[IndentingNewLine]", 
       RowBox[{"(*", 
        RowBox[{
-       "Draw", " ", "text", " ", "on", " ", "Sorted", " ", "Normal", " ", 
+       "Normal", " ", "Labels", " ", "on", " ", "Sorted", " ", "Normal", " ", 
         "Disk"}], "*)"}], "\[IndentingNewLine]", 
       RowBox[{"sortedNormalRobot", "=", 
-       RowBox[{"Table", "[", 
+       RowBox[{"If", "[", 
         RowBox[{
-         RowBox[{"Text", "[", 
+         RowBox[{"rl", "\[GreaterEqual]", "2"}], ",", 
+         RowBox[{"Table", "[", 
           RowBox[{
-           RowBox[{
-            RowBox[{"Keys", "[", "robotAssignedNormal", "]"}], 
-            "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], ",", 
-           RowBox[{
-            RowBox[{"{", 
+           RowBox[{"Text", "[", 
+            RowBox[{
              RowBox[{
-              RowBox[{"-", "2.3"}], ",", 
-              RowBox[{"-", "1.5"}]}], "}"}], "+", 
-            RowBox[{"1.2", 
+              RowBox[{"Keys", "[", "robotAssignedNormal", "]"}], 
+              "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], ",", 
              RowBox[{
-              RowBox[{
-              "robotAssignedNormal", "\[LeftDoubleBracket]", "i", 
-               "\[RightDoubleBracket]"}], "\[LeftDoubleBracket]", "1", 
-              "\[RightDoubleBracket]"}]}]}]}], "]"}], ",", 
-         RowBox[{"{", 
-          RowBox[{"i", ",", "1", ",", 
-           RowBox[{"Length", "[", "robotAssignedNormal", "]"}], ",", "1"}], 
-          "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"-", "2.3"}], ",", 
+                RowBox[{"-", "1.5"}]}], "}"}], "+", 
+              RowBox[{"1.2", 
+               RowBox[{
+                RowBox[{
+                "robotAssignedNormal", "\[LeftDoubleBracket]", "i", 
+                 "\[RightDoubleBracket]"}], "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}]}]}]}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{"Length", "[", "robotAssignedNormal", "]"}], ",", "1"}], 
+            "}"}]}], "]"}], ",", 
+         RowBox[{"{", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
       RowBox[{"sortedNormalObstacle", "=", 
-       RowBox[{"Table", "[", 
+       RowBox[{"If", "[", 
         RowBox[{
-         RowBox[{"Text", "[", 
+         RowBox[{"ol", "\[GreaterEqual]", "2"}], ",", 
+         RowBox[{"Table", "[", 
           RowBox[{
-           RowBox[{
-            RowBox[{"Keys", "[", "obstacleAssignedNormal", "]"}], 
-            "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], ",", 
-           RowBox[{
-            RowBox[{"{", 
+           RowBox[{"Text", "[", 
+            RowBox[{
              RowBox[{
-              RowBox[{"-", "2.3"}], ",", 
-              RowBox[{"-", "1.5"}]}], "}"}], "+", 
-            RowBox[{"1.2", 
+              RowBox[{"Keys", "[", "obstacleAssignedNormal", "]"}], 
+              "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], ",", 
              RowBox[{
-              RowBox[{
-              "obstacleAssignedNormal", "\[LeftDoubleBracket]", "i", 
-               "\[RightDoubleBracket]"}], "\[LeftDoubleBracket]", "1", 
-              "\[RightDoubleBracket]"}]}]}]}], "]"}], ",", 
-         RowBox[{"{", 
-          RowBox[{"i", ",", "1", ",", 
-           RowBox[{"Length", "[", "obstacleAssignedNormal", "]"}], ",", "1"}],
-           "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"-", "2.3"}], ",", 
+                RowBox[{"-", "1.5"}]}], "}"}], "+", 
+              RowBox[{"1.2", 
+               RowBox[{
+                RowBox[{
+                "obstacleAssignedNormal", "\[LeftDoubleBracket]", "i", 
+                 "\[RightDoubleBracket]"}], "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}]}]}]}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{"Length", "[", "obstacleAssignedNormal", "]"}], ",", 
+             "1"}], "}"}]}], "]"}], ",", 
+         RowBox[{"{", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
       "\[IndentingNewLine]", 
       RowBox[{"(*", 
        RowBox[{"Minkowski", " ", "Normals", " ", "Arrows"}], "*)"}], 
@@ -1049,34 +1159,88 @@ Cell[BoxData[
          RowBox[{"minkrobotlinelist", ",", "minkObstlinelist"}], "]"}]}]}], 
       ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
       RowBox[{"(*", 
-       RowBox[{"Minkowski", " ", "Normals", " ", "Labels"}], "*)"}], 
-      "\[IndentingNewLine]", 
+       RowBox[{"Minkowski", " ", 
+        RowBox[{"Robot", "/", "Obstacle"}], " ", "Respective", " ", "Side", 
+        " ", "Normals", " ", "Labels"}], "*)"}], "\[IndentingNewLine]", 
       RowBox[{"shiftedMinkLineList", "=", 
        RowBox[{"lineList", "@", "shiftedMink"}]}], ";", "\[IndentingNewLine]", 
-      RowBox[{"minkowskiSidesNormalLabels", "=", " ", 
-       RowBox[{"Table", "[", 
-        RowBox[{
-         RowBox[{"Text", "[", 
+      RowBox[{"roboPosMink", "=", 
+       RowBox[{"(", 
+        RowBox[{"Flatten", "@", 
+         RowBox[{"(", 
           RowBox[{
            RowBox[{
-           "orderOfNormalsKeys", "\[LeftDoubleBracket]", "i", 
-            "\[RightDoubleBracket]"}], ",", 
+            RowBox[{"Position", "[", 
+             RowBox[{"orderOfNormalsKeys", ",", 
+              SubscriptBox["\[Alpha]", "#"]}], "]"}], "&"}], "/@", 
+           RowBox[{"Range", "[", 
+            RowBox[{"1", ",", "rl"}], "]"}]}], ")"}]}], ")"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"obosPosMink", "=", 
+       RowBox[{"(", 
+        RowBox[{"Flatten", "@", 
+         RowBox[{"(", 
+          RowBox[{
            RowBox[{
-            RowBox[{
-             RowBox[{"-", "0.25"}], 
-             RowBox[{"(", 
-              RowBox[{"normalVector", "@", 
-               RowBox[{
-               "shiftedMinkLineList", "\[LeftDoubleBracket]", "i", 
-                "\[RightDoubleBracket]"}]}], ")"}]}], "+", 
-            RowBox[{"Mean", "@", 
+            RowBox[{"Position", "[", 
+             RowBox[{"orderOfNormalsKeys", ",", 
+              SubscriptBox["\[Beta]", "#"]}], "]"}], "&"}], "/@", 
+           RowBox[{"Range", "[", 
+            RowBox[{"1", ",", "ol"}], "]"}]}], ")"}]}], ")"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"minkowskiRobotSidesLabels", "=", " ", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"rl", "\[GreaterEqual]", "2"}], ",", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"Text", "[", 
              RowBox[{
-             "shiftedMinkLineList", "\[LeftDoubleBracket]", "i", 
-              "\[RightDoubleBracket]"}]}]}]}], "]"}], ",", 
-         RowBox[{"{", 
-          RowBox[{"i", ",", "1", ",", 
-           RowBox[{"Length", "@", "orderOfNormalsKeys"}], ",", "1"}], "}"}]}],
-         "]"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+              RowBox[{
+              "orderOfNormalsKeys", "\[LeftDoubleBracket]", "#", 
+               "\[RightDoubleBracket]"}], ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"-", "0.25"}], 
+                RowBox[{"(", 
+                 RowBox[{"normalVector", "@", 
+                  RowBox[{
+                  "shiftedMinkLineList", "\[LeftDoubleBracket]", "#", 
+                   "\[RightDoubleBracket]"}]}], ")"}]}], "+", 
+               RowBox[{"Mean", "@", 
+                RowBox[{
+                "shiftedMinkLineList", "\[LeftDoubleBracket]", "#", 
+                 "\[RightDoubleBracket]"}]}]}]}], "]"}], ")"}], "&"}], "/@", 
+          "roboPosMink"}], ",", 
+         RowBox[{"{", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"minkowskiObstacleSidesLabels", "=", " ", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"ol", "\[GreaterEqual]", "2"}], ",", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"Text", "[", 
+             RowBox[{
+              RowBox[{
+              "orderOfNormalsKeys", "\[LeftDoubleBracket]", "#", 
+               "\[RightDoubleBracket]"}], ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"-", "0.25"}], 
+                RowBox[{"(", 
+                 RowBox[{"normalVector", "@", 
+                  RowBox[{
+                  "shiftedMinkLineList", "\[LeftDoubleBracket]", "#", 
+                   "\[RightDoubleBracket]"}]}], ")"}]}], "+", 
+               RowBox[{"Mean", "@", 
+                RowBox[{
+                "shiftedMinkLineList", "\[LeftDoubleBracket]", "#", 
+                 "\[RightDoubleBracket]"}]}]}]}], "]"}], ")"}], "&"}], "/@", 
+          "obosPosMink"}], ",", 
+         RowBox[{"{", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
       RowBox[{"(*", 
        RowBox[{
        "Discretize", " ", "the", " ", "minkowski", " ", "Polygon", " ", 
@@ -1147,7 +1311,10 @@ Cell[BoxData[
                   RowBox[{"{", "minkowskiSidesNormalArrows", "}"}]}], "]"}], 
                 ",", 
                 RowBox[{"{", 
-                 RowBox[{"Black", ",", "minkowskiSidesNormalLabels"}], 
+                 RowBox[{"Blue", ",", "minkowskiRobotSidesLabels"}], "}"}], 
+                ",", 
+                RowBox[{"{", 
+                 RowBox[{"Red", ",", "minkowskiObstacleSidesLabels"}], 
                  "}"}]}], "}"}], "\[IndentingNewLine]", 
               RowBox[{"(*", 
                RowBox[{"Obstacle", " ", "Graphics", " ", "Object"}], "*)"}], 
@@ -1536,7 +1703,7 @@ Cell[BoxData[
          RowBox[{"{", 
           RowBox[{"2.298", ",", "3.298"}], "}"}], ",", 
          RowBox[{"{", 
-          RowBox[{"1.347", ",", "2.607"}], "}"}], ",", 
+          RowBox[{"1.348", ",", "2.607"}], "}"}], ",", 
          RowBox[{"{", 
           RowBox[{"1.710", ",", "1.489"}], "}"}], ",", 
          RowBox[{"{", 
@@ -2110,9 +2277,64 @@ Cell[BoxData[
    3.7618650504801564`*^9}, {3.7618651289003673`*^9, 3.76186521776266*^9}, {
    3.7618653944409957`*^9, 3.7618655516085443`*^9}, {3.761865648715767*^9, 
    3.761865658714018*^9}, {3.7618657041325116`*^9, 3.76186571174415*^9}, {
-   3.761865771800458*^9, 3.761865771897235*^9}},
+   3.761865771800458*^9, 3.761865771897235*^9}, {3.761867224774253*^9, 
+   3.7618672257955503`*^9}, {3.7619422374557734`*^9, 3.761942241208082*^9}, {
+   3.7619424577716513`*^9, 3.761942468168468*^9}, {3.7619426680645647`*^9, 
+   3.7619426915391626`*^9}, {3.7619427317935495`*^9, 
+   3.7619428844472275`*^9}, {3.7619429261701856`*^9, 
+   3.7619429727059517`*^9}, {3.76194305839128*^9, 3.7619430677017393`*^9}, {
+   3.761943101582734*^9, 3.761943181005945*^9}, {3.7619432156947827`*^9, 
+   3.761943215783622*^9}, {3.7619432676194544`*^9, 3.761943267950822*^9}, {
+   3.761943306741083*^9, 3.761943330199728*^9}, {3.7619433744683294`*^9, 
+   3.761943374709741*^9}, {3.761943474240053*^9, 3.7619434820153756`*^9}, {
+   3.7619437732615223`*^9, 3.7619437809637437`*^9}, {3.7619438507773347`*^9, 
+   3.761943855009209*^9}, {3.7619448025922594`*^9, 3.761944813422023*^9}, {
+   3.761944847644307*^9, 3.761945120440892*^9}, {3.7619454279644933`*^9, 
+   3.761945470778317*^9}, 3.761945531069718*^9, {3.7619456245094337`*^9, 
+   3.761945653327819*^9}, {3.7619457791623416`*^9, 3.7619458123221064`*^9}, {
+   3.761945891676267*^9, 3.761945934905717*^9}, {3.761945977573308*^9, 
+   3.761946093948121*^9}, {3.7619461247801523`*^9, 3.761946125138601*^9}, {
+   3.7619461586959968`*^9, 3.761946225017173*^9}, {3.7619466854780097`*^9, 
+   3.7619466981398106`*^9}, {3.7619467284633913`*^9, 3.761946786821663*^9}, {
+   3.7619468394137926`*^9, 3.7619468533695545`*^9}, {3.761946895977069*^9, 
+   3.761946903789543*^9}, {3.761946987052059*^9, 3.761946987621007*^9}, {
+   3.7619471664231305`*^9, 3.7619472184597006`*^9}, {3.761947297725829*^9, 
+   3.7619473110484743`*^9}, {3.761947372877421*^9, 3.7619473785474887`*^9}, {
+   3.7619476282636137`*^9, 3.7619476286244392`*^9}, {3.761964965132492*^9, 
+   3.7619649654829082`*^9}, {3.761965026523918*^9, 3.7619650383016825`*^9}, {
+   3.7619651761843657`*^9, 3.7619651814070363`*^9}, {3.7619655305776315`*^9, 
+   3.761965533956933*^9}, {3.761965579962531*^9, 3.7619655834859257`*^9}, {
+   3.7619657071573997`*^9, 3.761965764354373*^9}, {3.761965799234143*^9, 
+   3.7619658033079023`*^9}, {3.7619658825170617`*^9, 3.761965958989352*^9}, {
+   3.761966026339875*^9, 3.761966132168974*^9}, {3.7619662210728407`*^9, 
+   3.761966224116743*^9}, {3.761966254359844*^9, 3.761966256783516*^9}, {
+   3.761966361844525*^9, 3.7619664510250983`*^9}, {3.761966720357029*^9, 
+   3.7619667675065317`*^9}, {3.761966818963046*^9, 3.76196684645938*^9}, {
+   3.7619669213846273`*^9, 3.761966922121517*^9}, {3.7619670168688965`*^9, 
+   3.761967058355957*^9}, {3.7619670987970247`*^9, 3.7619671025444407`*^9}, {
+   3.761967140614701*^9, 3.7619671465037975`*^9}, {3.7619672836563754`*^9, 
+   3.7619672840337257`*^9}, {3.761994680009971*^9, 3.7619947123542986`*^9}, {
+   3.762002457092984*^9, 3.762002474611519*^9}, {3.7620026925259027`*^9, 
+   3.7620026974520144`*^9}, {3.7620027487248845`*^9, 
+   3.7620027507830687`*^9}, {3.7620028726356754`*^9, 3.762002952065626*^9}, {
+   3.7620030289254184`*^9, 3.762003081492711*^9}, {3.7620033151010127`*^9, 
+   3.7620033355065174`*^9}, 3.7620047671905003`*^9, {3.762005211027822*^9, 
+   3.7620052151812487`*^9}, {3.7620069297537575`*^9, 
+   3.7620069298704515`*^9}, {3.7620070368831663`*^9, 
+   3.7620071014284954`*^9}, {3.7620071317104845`*^9, 
+   3.7620071452053833`*^9}, {3.762007188437729*^9, 3.762007191469617*^9}, {
+   3.7620074167416267`*^9, 3.7620074705726204`*^9}, {3.7620075174741583`*^9, 
+   3.762007543847598*^9}, {3.762007613774495*^9, 3.7620076260477047`*^9}, {
+   3.7620077177340765`*^9, 3.7620077329693193`*^9}, 3.7620077685182185`*^9, {
+   3.762008184339818*^9, 3.7620083343505077`*^9}, {3.762008389265606*^9, 
+   3.7620085832406845`*^9}, {3.762008887494357*^9, 3.762008887596116*^9}, {
+   3.762009030841222*^9, 3.762009055588026*^9}, {3.7620091797362576`*^9, 
+   3.7620091814147716`*^9}, {3.762009723083701*^9, 3.762009756700768*^9}, {
+   3.762009876366637*^9, 3.762009879112299*^9}, {3.7620099383847265`*^9, 
+   3.7620099668635464`*^9}, {3.7620100247277117`*^9, 3.762010078051096*^9}, {
+   3.762010128504122*^9, 3.762010146748319*^9}},
  CellTags->"Main Code",
- CellLabel->"In[117]:=",
+ CellLabel->"In[171]:=",
  CellID->149023035,ExpressionUUID->"d85e33be-5d82-4801-b30b-e22b83cd7909"],
 
 Cell[BoxData[
@@ -2121,13 +2343,13 @@ Cell[BoxData[
    DynamicModuleBox[{$CellContext`a$$ = True, $CellContext`c$$ = 
     True, $CellContext`m$$ = 5, $CellContext`n$$ = 5, $CellContext`ol$$ = 
     5, $CellContext`pts$$ = {{2.885, 1.489}, {3.249, 2.6}, {2.298, 3.298}, {
-    1.34704, 2.607}, {1.71, 1.489}, {-1.71, 1.489}, {-1.34704, 
-    2.607}, {-2.298, 3.298}, {-3.249, 2.607}, {-2.885, 
-    1.489}}, $CellContext`rl$$ = 5, $CellContext`s$$ = 
-    1, $CellContext`stableOrMove$$ = "Stationary", $CellContext`step$$ = 0.01,
-     Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
-    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
-    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+    1.348, 2.607}, {1.71, 1.489}, {-1.71, 1.489}, {-1.34704, 2.607}, {-2.298, 
+    3.298}, {-3.249, 2.607}, {-2.885, 1.489}}, $CellContext`rl$$ = 
+    5, $CellContext`s$$ = 1, $CellContext`stableOrMove$$ = 
+    "Stationary", $CellContext`step$$ = 0.01, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
        Hold[$CellContext`stableOrMove$$], "Stationary", "View"}, {
       "Stationary", "Move around Mikowski"}}, {
       Hold[$CellContext`step$$], 0.01}, {
@@ -2152,33 +2374,33 @@ Cell[BoxData[
            Manipulate`Place[4]}, "  "], 
          Manipulate`Place[5]]]], Manipulate`Dump`ThisIsNotAControl}, {{
        Hold[$CellContext`pts$$], {{2.885, 1.489}, {3.249, 2.6}, {2.298, 
-       3.298}, {1.347, 2.607}, {1.71, 1.489}, {-1.71, 1.489}, {-1.347, 
+       3.298}, {1.348, 2.607}, {1.71, 1.489}, {-1.71, 1.489}, {-1.347, 
        2.607}, {-2.298, 3.298}, {-3.249, 2.607}, {-2.885, 1.489}}}, {-3.249, 
       1.489}, {3.249, 3.298}}}, Typeset`size$$ = {486., {239., 246.}}, 
     Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
-    True, $CellContext`stableOrMove$171845$$ = 
-    False, $CellContext`a$171846$$ = False, $CellContext`c$171847$$ = 
-    False, $CellContext`m$171848$$ = 0, $CellContext`n$171849$$ = 
-    0, $CellContext`s$171850$$ = 0, $CellContext`pts$171851$$ = {0, 0}}, 
+    True, $CellContext`stableOrMove$197048$$ = 
+    False, $CellContext`a$197049$$ = False, $CellContext`c$197050$$ = 
+    False, $CellContext`m$197051$$ = 0, $CellContext`n$197052$$ = 
+    0, $CellContext`s$197053$$ = 0, $CellContext`pts$197054$$ = {0, 0}}, 
     DynamicBox[Manipulate`ManipulateBoxes[
      2, StandardForm, 
       "Variables" :> {$CellContext`a$$ = True, $CellContext`c$$ = 
         True, $CellContext`m$$ = 5, $CellContext`n$$ = 5, $CellContext`ol$$ = 
         Null, $CellContext`pts$$ = {{2.885, 1.489}, {3.249, 2.6}, {2.298, 
-         3.298}, {1.347, 2.607}, {1.71, 1.489}, {-1.71, 1.489}, {-1.347, 
+         3.298}, {1.348, 2.607}, {1.71, 1.489}, {-1.71, 1.489}, {-1.347, 
          2.607}, {-2.298, 3.298}, {-3.249, 2.607}, {-2.885, 
          1.489}}, $CellContext`rl$$ = 
         Dynamic[$CellContext`ol$$], $CellContext`s$$ = 
         1, $CellContext`stableOrMove$$ = "Stationary", $CellContext`step$$ = 
         0.01}, "ControllerVariables" :> {
-        Hold[$CellContext`stableOrMove$$, $CellContext`stableOrMove$171845$$, 
+        Hold[$CellContext`stableOrMove$$, $CellContext`stableOrMove$197048$$, 
          False], 
-        Hold[$CellContext`a$$, $CellContext`a$171846$$, False], 
-        Hold[$CellContext`c$$, $CellContext`c$171847$$, False], 
-        Hold[$CellContext`m$$, $CellContext`m$171848$$, 0], 
-        Hold[$CellContext`n$$, $CellContext`n$171849$$, 0], 
-        Hold[$CellContext`s$$, $CellContext`s$171850$$, 0], 
-        Hold[$CellContext`pts$$, $CellContext`pts$171851$$, {0, 0}]}, 
+        Hold[$CellContext`a$$, $CellContext`a$197049$$, False], 
+        Hold[$CellContext`c$$, $CellContext`c$197050$$, False], 
+        Hold[$CellContext`m$$, $CellContext`m$197051$$, 0], 
+        Hold[$CellContext`n$$, $CellContext`n$197052$$, 0], 
+        Hold[$CellContext`s$$, $CellContext`s$197053$$, 0], 
+        Hold[$CellContext`pts$$, $CellContext`pts$197054$$, {0, 0}]}, 
       "OtherVariables" :> {
        Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
         Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
@@ -2200,8 +2422,10 @@ $CellContext`sortedNormalObstacle$, $CellContext`discretPolygon$, \
 $CellContext`sortedVectors$, $CellContext`pos$, $CellContext`prev$, \
 $CellContext`minkowskiPointswithSide$, $CellContext`shiftedMinkwithSide$, \
 $CellContext`minkowskiSidesNormalArrows$, $CellContext`shiftedMinkLineList$, \
-$CellContext`minkowskiSidesNormalLabels$}, 
-        If[$CellContext`pts$$ != $CellContext`oldpts$, $CellContext`oldpts$ = \
+$CellContext`roboPosMink$, $CellContext`obosPosMink$, \
+$CellContext`minkowskiRobotSidesLabels$, \
+$CellContext`minkowskiObstacleSidesLabels$, $CellContext`orderOfNormalsKeys$},
+         If[$CellContext`pts$$ != $CellContext`oldpts$, $CellContext`oldpts$ = \
 $CellContext`pts$$; Table[
             If[Part[
                Part[$CellContext`pts$$, $CellContext`i], 1] < 1.34704, Part[
@@ -2240,7 +2464,30 @@ $CellContext`pts$$; Table[
          Part[$CellContext`oboconvex$, 
            Span[1, $CellContext`ol$$]]; $CellContext`rc$ = 
          Mean[$CellContext`robot$]; $CellContext`oc$ = 
-         Mean[$CellContext`obstacle$]; $CellContext`robotNormal$ = Map[{
+         Mean[$CellContext`obstacle$]; If[$CellContext`m$$ == 3, If[
+            Not[
+             $CellContext`realQrm[
+              ArcCos[
+               VectorAngle[
+                $CellContext`vector[{$CellContext`rc$, 
+                  Median[
+                   Part[$CellContext`robot$, 
+                    Span[1, 2]]]}], -$CellContext`normalVector[
+                  Part[$CellContext`robot$, 
+                   Span[1, 2]]]]]]], $CellContext`robot$ = 
+            Reverse[$CellContext`robot$]]; Null]; If[$CellContext`n$$ == 3, If[
+            Not[
+             $CellContext`realQrm[
+              ArcCos[
+               VectorAngle[
+                $CellContext`vector[{$CellContext`oc$, 
+                  Median[
+                   Part[$CellContext`obstacle$, 
+                    Span[1, 2]]]}], -$CellContext`normalVector[
+                  Part[$CellContext`obstacle$, 
+                   Span[1, 2]]]]]]], $CellContext`obstacle$ = 
+            Reverse[$CellContext`obstacle$]]; 
+          Null]; $CellContext`robotNormal$ = Map[{
             If[$CellContext`rl$$ >= 2, -$CellContext`normalVector[#], {0, 0}], 
             If[$CellContext`rl$$ >= 2, -$CellContext`vector[#], {0, 0}], 
             "\[Alpha]", #}& , 
@@ -2301,7 +2548,7 @@ $CellContext`obstacleAssignedNormal$]], Part[#, 1] <
            SequencePosition[
             Part[$CellContext`sortedVectors$, 
              Span[1, All], 4], {"\[Alpha]", "\[Beta]"}], 1, 
-           1]; $CellContext`orderOfNormalsKeys = RotateLeft[
+           1]; $CellContext`orderOfNormalsKeys$ = RotateLeft[
            
            Keys[$CellContext`orderOfNormals$], $CellContext`pos$]; \
 $CellContext`prev$ = $CellContext`rc$ + Part[
@@ -2313,6 +2560,7 @@ $CellContext`prev$ = $CellContext`rc$ + Part[
            1]; $CellContext`minkowskiPointswithSide$ = Map[{
             Chop[$CellContext`prev$ = $CellContext`prev$ - Part[#, 3]], 
             Part[#, 4]}& , 
+           
            RotateLeft[$CellContext`sortedVectors$, $CellContext`pos$ - 
             1]]; $CellContext`minkowskiPoints$ = 
          Map[Part[#, 
@@ -2343,62 +2591,84 @@ $CellContext`shiftedMinkwithSide$ =
            1}]; $CellContext`sortedArrows$ = 
          Map[Arrow[{{-2.3, -1.5}, {-2.3, -1.5} + Part[#, 2]}]& , 
            Values[$CellContext`orderOfNormals$]]; $CellContext`robotlabel$ = 
-         Table[
-           Text[
-            Part[
-             Keys[$CellContext`robotAssignedNormal$], $CellContext`i], Median[
-              Part[
-               Part[$CellContext`robotAssignedNormal$, $CellContext`i], 4]] - 
-            0.2 Part[
-              Part[$CellContext`robotAssignedNormal$, $CellContext`i], 
-              1]], {$CellContext`i, 1, 
-            Length[$CellContext`robotAssignedNormal$], 
-            1}]; $CellContext`obstaclelabel$ = Table[
-           Text[
-            Part[
-             Keys[$CellContext`obstacleAssignedNormal$], $CellContext`i], 
-            Median[
-              Part[
-               Part[$CellContext`obstacleAssignedNormal$, $CellContext`i], 
-               4]] - 0.2 Part[
-              Part[$CellContext`obstacleAssignedNormal$, $CellContext`i], 
-              1]], {$CellContext`i, 1, 
-            Length[$CellContext`obstacleAssignedNormal$], 
-            1}]; $CellContext`sortedNormalRobot$ = Table[
-           Text[
-            Part[
-             
-             Keys[$CellContext`robotAssignedNormal$], $CellContext`i], {-2.3, \
--1.5} + 1.2 Part[
+         If[$CellContext`rl$$ >= 2, 
+           Table[
+            Text[
+             Part[
+              Keys[$CellContext`robotAssignedNormal$], $CellContext`i], Median[
+               Part[
+                Part[$CellContext`robotAssignedNormal$, $CellContext`i], 4]] - 
+             0.2 Part[
                Part[$CellContext`robotAssignedNormal$, $CellContext`i], 
                1]], {$CellContext`i, 1, 
-            Length[$CellContext`robotAssignedNormal$], 
-            1}]; $CellContext`sortedNormalObstacle$ = Table[
-           Text[
-            Part[
-             
-             Keys[$CellContext`obstacleAssignedNormal$], $CellContext`i], \
-{-2.3, -1.5} + 1.2 Part[
+             Length[$CellContext`robotAssignedNormal$], 
+             1}], {}]; $CellContext`obstaclelabel$ = 
+         If[$CellContext`ol$$ >= 2, 
+           Table[
+            Text[
+             Part[
+              Keys[$CellContext`obstacleAssignedNormal$], $CellContext`i], 
+             Median[
+               Part[
+                Part[$CellContext`obstacleAssignedNormal$, $CellContext`i], 
+                4]] - 0.2 Part[
                Part[$CellContext`obstacleAssignedNormal$, $CellContext`i], 
                1]], {$CellContext`i, 1, 
-            Length[$CellContext`obstacleAssignedNormal$], 
-            1}]; $CellContext`minkowskiSidesNormalArrows$ = Map[Arrow[{
+             Length[$CellContext`obstacleAssignedNormal$], 
+             1}], {}]; $CellContext`sortedNormalRobot$ = 
+         If[$CellContext`rl$$ >= 2, 
+           Table[
+            Text[
+             Part[
+              
+              Keys[$CellContext`robotAssignedNormal$], $CellContext`i], \
+{-2.3, -1.5} + 1.2 Part[
+                Part[$CellContext`robotAssignedNormal$, $CellContext`i], 
+                1]], {$CellContext`i, 1, 
+             Length[$CellContext`robotAssignedNormal$], 
+             1}], {}]; $CellContext`sortedNormalObstacle$ = 
+         If[$CellContext`ol$$ >= 2, 
+           Table[
+            Text[
+             Part[
+              
+              Keys[$CellContext`obstacleAssignedNormal$], $CellContext`i], \
+{-2.3, -1.5} + 1.2 Part[
+                Part[$CellContext`obstacleAssignedNormal$, $CellContext`i], 
+                1]], {$CellContext`i, 1, 
+             Length[$CellContext`obstacleAssignedNormal$], 
+             1}], {}]; $CellContext`minkowskiSidesNormalArrows$ = Map[Arrow[{
              Median[#], 0.5 $CellContext`normalVector[#] + Median[#]}]& , 
            
            Join[$CellContext`minkrobotlinelist$, \
 $CellContext`minkObstlinelist$]]; $CellContext`shiftedMinkLineList$ = \
-$CellContext`lineList[$CellContext`shiftedMink$]; \
-$CellContext`minkowskiSidesNormalLabels$ = Table[
-           Text[
-            
-            Part[$CellContext`orderOfNormalsKeys, $CellContext`i], (-0.25) \
+$CellContext`lineList[$CellContext`shiftedMink$]; $CellContext`roboPosMink$ = 
+         Flatten[
+           Map[Position[$CellContext`orderOfNormalsKeys$, 
+             Subscript[$CellContext`\[Alpha], #]]& , 
+            Range[1, $CellContext`rl$$]]]; $CellContext`obosPosMink$ = Flatten[
+           Map[Position[$CellContext`orderOfNormalsKeys$, 
+             Subscript[$CellContext`\[Beta], #]]& , 
+            Range[
+            1, $CellContext`ol$$]]]; $CellContext`minkowskiRobotSidesLabels$ = 
+         If[$CellContext`rl$$ >= 2, 
+           Map[Text[
+             
+             Part[$CellContext`orderOfNormalsKeys$, #], (-0.25) \
 $CellContext`normalVector[
-               Part[$CellContext`shiftedMinkLineList$, $CellContext`i]] + Mean[
-              
-              Part[$CellContext`shiftedMinkLineList$, $CellContext`i]]], \
-{$CellContext`i, 1, 
-            Length[$CellContext`orderOfNormalsKeys], 
-            1}]; $CellContext`discretPolygon$ = \
+                Part[$CellContext`shiftedMinkLineList$, #]] + Mean[
+               
+               Part[$CellContext`shiftedMinkLineList$, #]]]& , \
+$CellContext`roboPosMink$], {}]; $CellContext`minkowskiObstacleSidesLabels$ = 
+         If[$CellContext`ol$$ >= 2, 
+           Map[Text[
+             
+             Part[$CellContext`orderOfNormalsKeys$, #], (-0.25) \
+$CellContext`normalVector[
+                Part[$CellContext`shiftedMinkLineList$, #]] + Mean[
+               
+               Part[$CellContext`shiftedMinkLineList$, #]]]& , \
+$CellContext`obosPosMink$], {}]; $CellContext`discretPolygon$ = \
 $CellContext`discretizePoly[$CellContext`minkowskiPoints$, \
 $CellContext`step$$]; Graphics[{{
             EdgeForm[Thin], White, 
@@ -2415,7 +2685,8 @@ $CellContext`step$$]; Graphics[{{
                
                If[$CellContext`a$$ == 
                 True, {$CellContext`minkowskiSidesNormalArrows$}], {
-               Black, $CellContext`minkowskiSidesNormalLabels$}}, {{
+               Blue, $CellContext`minkowskiRobotSidesLabels$}, {
+               Red, $CellContext`minkowskiObstacleSidesLabels$}}, {{
                 EdgeForm[Red], LightRed, 
                 Polygon[$CellContext`obstacle$]}, {Red, 
                 Point[
@@ -2512,7 +2783,7 @@ $CellContext`oc$ + {0.2, 0.2}]}}}]}]],
             Manipulate`Place[3], 
             Manipulate`Place[4]}, "  "], 
           Manipulate`Place[5]]], {{$CellContext`pts$$, {{2.885, 1.489}, {
-          3.249, 2.6}, {2.298, 3.298}, {1.347, 2.607}, {1.71, 1.489}, {-1.71, 
+          3.249, 2.6}, {2.298, 3.298}, {1.348, 2.607}, {1.71, 1.489}, {-1.71, 
           1.489}, {-1.347, 2.607}, {-2.298, 3.298}, {-3.249, 2.607}, {-2.885, 
           1.489}}}, {-3.249, 1.489}, {3.249, 3.298}, ControlType -> Locator, 
          Appearance -> None, Enabled -> Dynamic[$CellContext`c$$]}}, 
@@ -2530,47 +2801,50 @@ $CellContext`oc$ + {0.2, 0.2}]}}}]}]],
    StripOnInput->False],
   Manipulate`InterpretManipulate[1]]], "Output",
  CellChangeTimes->{
-  3.761859995742408*^9, 3.7618600494188147`*^9, {3.7618601080435023`*^9, 
-   3.761860120179596*^9}, {3.761860230611575*^9, 3.7618602632051835`*^9}, 
-   3.761860447688959*^9, 3.761860693802928*^9, 3.76186110240928*^9, 
-   3.7618611341361904`*^9, {3.7618611660900326`*^9, 3.7618611889828696`*^9}, {
-   3.761861521842628*^9, 3.7618615320899224`*^9}, {3.7618616116370025`*^9, 
-   3.7618616247601943`*^9}, 3.7618618042020597`*^9, 3.7618618449083557`*^9, 
-   3.761861927269987*^9, 3.761862878605177*^9, {3.7618629227296395`*^9, 
-   3.761862930649947*^9}, {3.7618631290260067`*^9, 3.7618631564961433`*^9}, 
-   3.761863343469713*^9, {3.761863391281129*^9, 3.761863412417241*^9}, {
-   3.7618635206088595`*^9, 3.761863529404295*^9}, 3.7618637558884068`*^9, 
-   3.761864059676848*^9, {3.761864090422509*^9, 3.761864193229559*^9}, {
-   3.7618642853878937`*^9, 3.7618643702847786`*^9}, {3.7618644099327374`*^9, 
-   3.7618644359451246`*^9}, 3.7618648344719887`*^9, {3.761864926486831*^9, 
-   3.761864945942917*^9}, 3.761864990554473*^9, 3.7618650511104393`*^9, {
-   3.7618651104556875`*^9, 3.761865218438836*^9}, 3.7618653087352905`*^9, 
-   3.7618653748703194`*^9, {3.761865410195818*^9, 3.76186549252666*^9}, {
-   3.7618655267948923`*^9, 3.761865552137096*^9}, {3.761865604975789*^9, 
-   3.761865659242569*^9}, 3.7618657122148895`*^9, 3.7618657724487543`*^9},
+  3.7620077702804728`*^9, {3.762008201313402*^9, 3.762008230909296*^9}, 
+   3.7620082752894793`*^9, 3.762008335000738*^9, 3.762008407752122*^9, {
+   3.7620085730150676`*^9, 3.7620086001723843`*^9}, {3.762008640443619*^9, 
+   3.7620086658895464`*^9}, 3.7620088881267004`*^9, 3.762009005953801*^9, {
+   3.7620090378245096`*^9, 3.762009056132611*^9}, {3.7620091506507215`*^9, 
+   3.7620091820041637`*^9}, {3.762009350213201*^9, 3.7620093924123087`*^9}, 
+   3.7620094713251696`*^9, 3.7620095261934185`*^9, 3.7620095889625006`*^9, 
+   3.762009637847726*^9, {3.7620097440017357`*^9, 3.7620097573799458`*^9}, 
+   3.762009879515361*^9, 3.7620099416161947`*^9, {3.7620100331024427`*^9, 
+   3.762010078895858*^9}, {3.762010150473318*^9, 3.7620101708637915`*^9}, {
+   3.7620103375479016`*^9, 3.7620103525287814`*^9}},
  CellTags->"Main Code",
- CellLabel->"Out[117]=",
- CellID->323810689,ExpressionUUID->"b7d9c927-6ccd-49b1-a007-af2eddec9729"]
+ CellLabel->"Out[171]=",
+ CellID->700841480,ExpressionUUID->"8ff0d497-6940-4c77-9361-925206fcb515"]
 }, Open  ]],
 
-Cell["\<\
-ISSUES
-1) Color the \[Alpha]\[CloseCurlyQuote]s  and \[Beta]\[CloseCurlyQuote]s  \
-blue and red in minkowski region.
-2) Point and Line minkowski fix.
-3) Minkowski Shifting when changing some locators in robot/ obstacle. (Very \
-Important)
-4) Make new minkowski Function with new changes.
-5) Make demo by tomorrow. writeup the demonstration text (summary, details, \
-related work, etc.)
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.762003267203843*^9, 3.7620032685971756`*^9}},
+ CellID->249590669,ExpressionUUID->"88a3e86b-9778-48b1-8206-11194e1f05f9"],
 
-\
-\>", "Section",
- CellChangeTimes->{{3.761866128062013*^9, 3.7618663945717063`*^9}},
+Cell[TextData[{
+ "ISSUES\n",
+ StyleBox["//1) Color the \[Alpha]'s  and \[Beta]'s  blue and red in \
+Minkowski region.\n", "Text"],
+ StyleBox["//", "Subsection"],
+ StyleBox["1) Point and Line Minkowski fix.\n//3)when one vertex of the \
+triangle is translated to other direction, the normals reverse the \
+directions.", "Text"],
+ "\n1) Minkowski Shifting when changing some locators in robot/ obstacle. \
+(Very Important)\n2)when robot/obstacle is a Line we get 2 normals both \
+opposite to each other.\n3) Make new Minkowski Function with new changes.\n\
+4)Make demo by tomorrow. writeup the demonstration text (summary, details, \
+related work, etc.)"
+}], "Section",
+ CellChangeTimes->{{3.761866128062013*^9, 3.7618663945717063`*^9}, {
+  3.7619435673058066`*^9, 3.7619436380968447`*^9}, {3.761943682163417*^9, 
+  3.76194372930801*^9}, {3.7619452416144924`*^9, 3.761945371564972*^9}, {
+  3.761946273743348*^9, 3.76194628640692*^9}, {3.761947109649574*^9, 
+  3.7619471170344467`*^9}, {3.762008649196204*^9, 3.7620086616499376`*^9}, {
+  3.7620091619937253`*^9, 3.7620091620655003`*^9}},
  CellID->183158748,ExpressionUUID->"a5d8db34-fa45-4b42-8003-8af7b5e2d7bb"]
 }, Open  ]]
 },
-WindowSize->{1520, 791},
+WindowSize->{1536, 791},
 WindowMargins->{{-8, Automatic}, {Automatic, 0}},
 WindowTitle->"Minkowski_Sum_Normal_Rev6.nb",
 DockedCells->Cell[
@@ -2994,17 +3268,17 @@ StyleDefinitions->FrontEnd`FileName[{"MUnit"}, "MUnit.nb", CharacterEncoding ->
 (*CellTagsOutline
 CellTagsIndex->{
  "Main Code"->{
-  Cell[13621, 381, 89951, 1734, 4213, "Input",ExpressionUUID->"d85e33be-5d82-4801-b30b-e22b83cd7909",
+  Cell[14700, 409, 99856, 1928, 4689, "Input",ExpressionUUID->"d85e33be-5d82-4801-b30b-e22b83cd7909",
    CellTags->"Main Code",
    CellID->149023035],
-  Cell[103575, 2117, 21584, 435, 651, "Output",ExpressionUUID->"b7d9c927-6ccd-49b1-a007-af2eddec9729",
+  Cell[114559, 2339, 23222, 477, 651, "Output",ExpressionUUID->"8ff0d497-6940-4c77-9361-925206fcb515",
    CellTags->"Main Code",
-   CellID->323810689]}
+   CellID->700841480]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"Main Code", 146829, 2995}
+ {"Main Code", 160225, 3269}
  }
 *)
 (*NotebookFileOutline
@@ -3013,47 +3287,52 @@ Cell[CellGroupData[{
 Cell[622, 23, 389, 6, 85, "Subchapter",ExpressionUUID->"5599f4a2-65a4-42a1-bf11-d3fd3bcdf90d",
  InitializationCell->True,
  CellID->537274558],
-Cell[1014, 31, 768, 20, 91, "Input",ExpressionUUID->"6e528893-f7ee-40c7-9deb-78be7673e08e",
+Cell[1014, 31, 818, 21, 91, "Input",ExpressionUUID->"6e528893-f7ee-40c7-9deb-78be7673e08e",
  InitializationCell->True,
  InitializationGroup->True,
  CellID->254152640],
-Cell[1785, 53, 855, 26, 140, "Input",ExpressionUUID->"1339aed7-b782-43d4-a513-1309c9a70749",
+Cell[1835, 54, 855, 26, 140, "Input",ExpressionUUID->"1339aed7-b782-43d4-a513-1309c9a70749",
  InitializationCell->True,
  InitializationGroup->True,
  CellID->614486719],
-Cell[2643, 81, 1346, 40, 119, "Input",ExpressionUUID->"c85c6f6a-d8e1-42d2-8f09-a0aeb6e9b573",
+Cell[2693, 82, 1345, 40, 119, "Input",ExpressionUUID->"c85c6f6a-d8e1-42d2-8f09-a0aeb6e9b573",
  InitializationCell->True,
  InitializationGroup->True,
  CellID->221074263],
-Cell[3992, 123, 1053, 28, 119, "Input",ExpressionUUID->"b4a37082-2f2e-4562-a5ee-1a2758beee35",
+Cell[4041, 124, 1052, 28, 119, "Input",ExpressionUUID->"b4a37082-2f2e-4562-a5ee-1a2758beee35",
  InitializationCell->True,
  InitializationGroup->True,
  CellID->72501454],
-Cell[5048, 153, 832, 25, 91, "Input",ExpressionUUID->"4a71eaa6-15fe-4099-9e63-db235688a722",
+Cell[5096, 154, 899, 26, 91, "Input",ExpressionUUID->"4a71eaa6-15fe-4099-9e63-db235688a722",
  InitializationCell->True,
  InitializationGroup->True,
  CellID->260974026],
-Cell[5883, 180, 710, 21, 91, "Input",ExpressionUUID->"253250fd-c3ce-4b2b-b5cb-645b39f63846",
+Cell[5998, 182, 709, 21, 91, "Input",ExpressionUUID->"253250fd-c3ce-4b2b-b5cb-645b39f63846",
  InitializationCell->True,
  InitializationGroup->True,
  CellID->429294093],
-Cell[6596, 203, 6767, 166, 455, "Input",ExpressionUUID->"0756fda0-57dc-487a-8c28-a3046723b272",
+Cell[6710, 205, 6768, 166, 455, "Input",ExpressionUUID->"0756fda0-57dc-487a-8c28-a3046723b272",
  InitializationCell->True,
  InitializationGroup->True,
- CellID->57237067]
+ CellID->57237067],
+Cell[13481, 373, 961, 24, 120, "Input",ExpressionUUID->"924f0dc4-fc65-47cb-8c49-c104e23e4f5a",
+ InitializationCell->True,
+ CellID->7629533]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13400, 374, 196, 3, 85, "Subchapter",ExpressionUUID->"86eb5d61-1192-401b-987f-c378b134e3e4",
+Cell[14479, 402, 196, 3, 85, "Subchapter",ExpressionUUID->"86eb5d61-1192-401b-987f-c378b134e3e4",
  CellID->37223916],
 Cell[CellGroupData[{
-Cell[13621, 381, 89951, 1734, 4213, "Input",ExpressionUUID->"d85e33be-5d82-4801-b30b-e22b83cd7909",
+Cell[14700, 409, 99856, 1928, 4689, "Input",ExpressionUUID->"d85e33be-5d82-4801-b30b-e22b83cd7909",
  CellTags->"Main Code",
  CellID->149023035],
-Cell[103575, 2117, 21584, 435, 651, "Output",ExpressionUUID->"b7d9c927-6ccd-49b1-a007-af2eddec9729",
+Cell[114559, 2339, 23222, 477, 651, "Output",ExpressionUUID->"8ff0d497-6940-4c77-9361-925206fcb515",
  CellTags->"Main Code",
- CellID->323810689]
+ CellID->700841480]
 }, Open  ]],
-Cell[125174, 2555, 557, 14, 486, "Section",ExpressionUUID->"a5d8db34-fa45-4b42-8003-8af7b5e2d7bb",
+Cell[137796, 2819, 169, 2, 40, "Input",ExpressionUUID->"88a3e86b-9778-48b1-8206-11194e1f05f9",
+ CellID->249590669],
+Cell[137968, 2823, 1159, 20, 433, "Section",ExpressionUUID->"a5d8db34-fa45-4b42-8003-8af7b5e2d7bb",
  CellID->183158748]
 }, Open  ]]
 }
